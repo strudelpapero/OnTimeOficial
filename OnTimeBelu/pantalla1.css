@@ -23,33 +23,55 @@ html {
 
 .conteiner-azul{
     background-color: var(--primary-color);
-    display: flex;
-    padding: 2rem 0;
+    width: 100%;
+    height:39px;
 }
 
 .conteiner-hero{
     background-color: var(--background-color);
+    width: 100%;
 }
 
 .hero{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem; 
 }
 
 .conteiner-logo{
     display : flex;
     align-items: center;
+    height: 3.4vh;
 }
 
 .logo-reloj {
     width: auto; /* Mantiene la proporción del SVG */
-    margin-right: 1px; /* Reduce el margen derecho para acercar el reloj al nombre */
+    margin-right: 3.5px; /* Reduce el margen derecho para acercar el reloj al nombre */
   }
 
   .logo-nombre a {
     text-decoration: none;
     color : var(--primary-color);
-    font-size: 125%;
+    font-size: 5.1vw; /*en mobile son 20px*/
+  }
+
+  .registro-texto{
+    font-size: 3vw;
+    font-weight: bold;
+  }
+
+.p1-titulo{
+    background-color: var(--background-color);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 0; /* Ajusta el padding según necesidades */
+}
+
+  .titulo-busqueda{
+    font-size: 2rem; /* Ajusta según sea necesario */
+    text-align: center;
+    color: var(--dark-color);
   }
