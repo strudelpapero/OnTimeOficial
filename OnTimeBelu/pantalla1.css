@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Oswald:wght@200..700&family=Roboto&display=swap');
 :root{
     --primary-color: #10446D;
-    --background-color: #F5F5F5;
+    --background-color: white;
     --dark-color: #000000;
   }
 
@@ -42,22 +42,22 @@ html {
 .conteiner-logo{
     display : flex;
     align-items: center;
-    height: 3.4vh;
+    gap: .5rem;
 }
 
 .logo-reloj {
     width: auto; /* Mantiene la proporción del SVG */
-    margin-right: 3.5px; /* Reduce el margen derecho para acercar el reloj al nombre */
+    /*margin-right: 3.5px;  Reduce el margen derecho para acercar el reloj al nombre */
   }
 
   .logo-nombre a {
     text-decoration: none;
     color : var(--primary-color);
-    font-size: 5.1vw; /*en mobile son 20px*/
+    font-size: 2rem; /*en mobile son 20px*/
   }
 
   .registro-texto{
-    font-size: 3vw;
+    font-size: 1.3rem;
     font-weight: bold;
   }
 
@@ -71,7 +71,52 @@ html {
 }
 
   .titulo-busqueda{
-    font-size: 2rem; /* Ajusta según sea necesario */
+    font-size: 2.4rem; /* Ajusta según sea necesario */
     text-align: center;
     color: var(--dark-color);
   }
+
+.conteiner-navbar-search{
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  padding: 1rem;
+}
+
+.search-form{
+  display: flex;
+  border: 1px solid var(--primary-color);
+  border-radius: 3px;
+  overflow: hidden;
+  width:70%;
+}
+
+.search-input{
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  flex-grow: 1; 
+}
+
+.search-input::placeholder {
+  color: var(--dark-color);
+}
+
+.search-button{
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.search-lupita{
+  width:auto;
+}
+
+/* Estilos adicionales para ocultar la lupa en foco */
+.search-input:focus ~ .search-button {
+  display: none;
+}
