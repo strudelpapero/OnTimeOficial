@@ -23,7 +23,9 @@ app.get('/', async (req, res) => {
             res.send(`La solucion es: ${rows[0].solution}`)
             await connection.end();
     }catch (error) {
-        res.status(500).send('Database connection failed')
+        // res.status(500).send('Database connection failed')
+        console.log(error)
+        res.json(error)
     }
 });
 
