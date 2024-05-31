@@ -10,7 +10,6 @@
 <body>
   <header>
     <div class="conteiner-azul"></div>
-
     <div class="conteiner-hero">
       <div class="conteiner hero">
         <div class="conteiner-logo">
@@ -22,8 +21,9 @@
   </header>
   <div class="conteiner-imagen-plato" id="">
     <img class="imagen-plato" id="imagenPlato" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudGVzfGVufDB8fDB8fHww">
-    <span class="nombre-resto">Amayta Pattiserie</span>
   </div>
+
+  <div class="conteiner-nombre-resto"><span class="nombre-resto">Amayta Pattiserie</span></div>
 
   <div class="conteiner-ubicacion">
     <img class="icon-ubicacion" src="Assets/icons/ubicacion.svg">
@@ -34,8 +34,9 @@
     <img class="icon-billete" src="Assets/icons/billete.svg">
     <span class="ubicacion">Juncal 1207</span>
   </div>
-
-  <button class="reservar-button">RESERVAR</button>
+  <div class="conteiner-reservar-button">
+    <button class="reservar-button">RESERVAR</button>
+  </div>
 
   <div class="nav-sections">
     <a href="#nosotros" class="nav-link">Nosotros</a>
@@ -59,9 +60,30 @@
   </section>
 
   <style>
-    /*.conteiner-imagen-plato img{
+   .conteiner-imagen-plato {
+      display: flex;
+      width:100%;
+      justify-content: center; /* Apila los elementos verticalmente */
+      padding: 0.5rem;
+    }
+    .conteiner-nombre-resto{
+      display:flex;
+      max-width:100%;
+    }
+    .imagen-plato {
+      max-width: 70%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid #000000;
+      margin-bottom: 0.5rem;
+      align-self: center;
+    }
 
-    }*/
+    .nombre-resto {
+      font-size: 1.5rem;
+      text-align: left;
+      padding: 0 15%;
+    }
   </style>
 </body>
 </html>
