@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pantalla1.css">
+  <title>AlmuerzoRapido</title>
+</head>
+<body>
+  <header>
+    <div class="conteiner-azul"></div>
+    <div class="conteiner-hero">
+      <div class="conteiner hero">
+        <div class="conteiner-logo">
+          <a href="/"><img class="logo-reloj" src="Assets/icons/logo-reloj.svg"></a>
+          <span class="logo-nombre"><a href="/">N TIME</a></span>
+        </div>
+      </div> 
+    </div>
+  </header>
+  <div class="conteiner-imagen-plato" id="">
+    <img class="imagen-plato" id="imagenPlato" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudGVzfGVufDB8fDB8fHww">
+  </div>
+
+  <div class="conteiner-nombre-resto"><span class="nombre-resto">Amayta Pattiserie</span></div>
+
+  <div class="conteiner-ubicacion">
+    <img class="icon-ubicacion" src="Assets/icons/ubicacion.svg">
+    <span class="ubicacion">Juncal 1207</span>
+  </div>
+
+  <div class="conteiner-rango-precio">
+    <img class="icon-billete" src="Assets/icons/billete.svg">
+    <span class="ubicacion">Juncal 1207</span>
+  </div>
+  <div class="conteiner-reservar-button">
+    <button class="reservar-button">RESERVAR</button>
+  </div>
+
+  <div class="nav-sections">
+    <a href="#nosotros" class="nav-link">Nosotros</a>
+    <a href="#menu" class="nav-link">Menú</a>
+    <a href="#resenas" class="nav-link">Reseñas</a>
+  </div>
+
+  <section id="nosotros" class="section-content">
+    <h2>Nosotros</h2>
+    <p>Información sobre el restaurante.</p>
+  </section>
+
+  <section id="menu" class="section-content">
+    <h2>Menú</h2>
+    <p>Detalles del menú del restaurante.</p>
+  </section>
+
+  <section id="resenas" class="section-content">
+    <h2>Reseñas</h2>
+    <p>Opiniones de los clientes.</p>
+  </section>
+
+  <style>
+   .conteiner-imagen-plato {
+      display: flex;
+      width:100%;
+      justify-content: center; /* Apila los elementos verticalmente */
+      padding: 0.5rem;
+    }
+    .conteiner-nombre-resto{
+      display:flex;
+      max-width:100%;
+    }
+    .imagen-plato {
+      max-width: 70%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid #000000;
+      margin-bottom: 0.5rem;
+      align-self: center;
+    }
+
+    .nombre-resto {
+      font-size: 1.5rem;
+      text-align: left;
+      padding: 0 15%;
+    }
+  </style>
+</body>
+</html>

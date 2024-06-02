@@ -19,12 +19,23 @@ app.get('/', async (req, res) => {
             database: MYSQL_DATABASE,
         });
 
+<<<<<<< HEAD
         //const [row, fields] = await connection.execute('SELECT 1 + 1 AS solution');
             //res.send(`La solucion es: ${rows[0].solution}`)
             //await connection.end();
     //}catch (error) {
         //res.status(500).send('Database connection failed')
     //}
+=======
+        const [row, fields] = await connection.execute('SELECT 1 + 1 AS solution');
+            res.send(`La solucion es: ${rows[0].solution}`)
+            await connection.end();
+    }catch (error) {
+        // res.status(500).send('Database connection failed')
+        console.log(error)
+        res.json(error)
+    }
+>>>>>>> 9afa7cde9c63684cc866f125a5a19390c77e69a4
 });
 
 app.listen(port, () => {
