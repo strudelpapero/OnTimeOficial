@@ -23,7 +23,7 @@
     <img class="imagen-plato" id="imagenPlato" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudGVzfGVufDB8fDB8fHww">
   </div>
 
-  <div class="conteiner-nombre-resto"><span class="nombre-resto">Amayta Pattiserie</span></div>
+  <div class="conteiner-nombre-resto"><span class="nombre-resto">AMAYTA PATTISERIE</span></div>
 
   <div class="conteiner-ubicacion">
     <img class="icon-ubicacion" src="Assets/icons/ubicacion.svg">
@@ -32,57 +32,252 @@
 
   <div class="conteiner-rango-precio">
     <img class="icon-billete" src="Assets/icons/billete.svg">
-    <span class="ubicacion">Juncal 1207</span>
+    <span class="rango-precio">$18.000-20.000</span>
   </div>
   <div class="conteiner-reservar-button">
     <button class="reservar-button">RESERVAR</button>
   </div>
-
   <div class="nav-sections">
-    <a href="#nosotros" class="nav-link">Nosotros</a>
-    <a href="#menu" class="nav-link">Menú</a>
-    <a href="#resenas" class="nav-link">Reseñas</a>
+    <hr>
+    <div class="nav-links">
+      <a href="#nosotros" class="nav-link">Nosotros</a>
+      <a href="#menu" class="nav-link">Menú</a>
+      <a href="#resenas" class="nav-link">Reseñas</a>
+    </div>
+    <hr>
   </div>
 
-  <section id="nosotros" class="section-content">
-    <h2>Nosotros</h2>
-    <p>Información sobre el restaurante.</p>
+  <section id="nosotros" class="section-content-nosotros">
+    <h1>Opciones Alimentarias:</h1>
+    <span>Gluten free, Vegetariano</span>
+    <h1>Horarios de Atención:</h1>
+    <span>Lunes: 7:30 a 00hs</span>
+    <span>Martes: 7:30 a 00hs</span>
+    <span>Miércoles: 7:30 a 00hs</span>
+    <span>Jueves: 7:30 a 00hs</span>
   </section>
 
-  <section id="menu" class="section-content">
-    <h2>Menú</h2>
-    <p>Detalles del menú del restaurante.</p>
+  <section id="menu" class="section-content-menu">
+    <h1>Menú</h1>
+    <div class="plato" id="plato1">
+      <span>Sandwich de pollo</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$9000</span>
+      </div>
+    </div>
+    <div class="plato" id="plato2">
+      <span>Wrap de lomo</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$9000</span>
+      </div>
+    </div>
+    <div class="plato" id="plato3">
+      <span>Milanesa de lomo</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$900</span>
+      </div>
+    </div>
+    <div class="plato" id="plato4">
+      <span>Tarta de jamón</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$9000</span>
+      </div>
+    </div>
+    <div class="plato" id="plato5">
+      <span>Tarta de Queso</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$9000</span>
+      </div>
+    </div>
+    <div class="plato" id="plato6">
+      <span>Pesca del día</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$9000</span>
+      </div>
+    </div>
+    <div class="plato" id="plato7">
+      <span>Pollo al verdeo</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$9000</span>
+      </div>
+    </div>
+    <div class="plato" id="plato8">
+      <span>Ensalada Caesar</span>
+      <div class="info">
+        <img class="mas-info" src="Assets/icons/+.svg">
+        <span id="precio">$9000</span>
+      </div>
+    </div>
   </section>
 
-  <section id="resenas" class="section-content">
+  <section id="resenas" class="section-content-resenas">
     <h2>Reseñas</h2>
     <p>Opiniones de los clientes.</p>
   </section>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+    :root{
+      --primary-color: #64B5F6;
+      --background-color: white;
+      --dark-color: #000000;
+      --buttons-color: #EC6F53;
+    }
+
    .conteiner-imagen-plato {
       display: flex;
       width:100%;
+      height: 100%;
       justify-content: center; /* Apila los elementos verticalmente */
-      padding: 0.5rem;
+      padding: 0.2rem 0;
     }
-    .conteiner-nombre-resto{
-      display:flex;
-      max-width:100%;
+    .conteiner-nombre-resto {
+      display: flex;
+      justify-content: center;
     }
     .imagen-plato {
-      max-width: 70%;
-      height: auto;
+      width: 82%;
+      max-height: 160px;
       border-radius: 10px;
       border: 1px solid #000000;
-      margin-bottom: 0.5rem;
       align-self: center;
     }
-
     .nombre-resto {
-      font-size: 1.5rem;
-      text-align: left;
-      padding: 0 15%;
+      padding: 0.6rem;
+      letter-spacing: 0.08em; 
+      font-weight:lighter;
+      font-size: 5.4vw;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .conteiner-ubicacion{
+      display: flex;
+      max-width: 100%;
+      justify-content: left;
+      align-items: center;
+      padding: 0.6rem 9% 1.4rem 9%;
+      gap: 1.6rem;
+    }
+    .conteiner-rango-precio{
+      display: flex;
+      max-width: 100%;
+      justify-content: left;
+      align-items:center;
+      padding: 0.4rem 4.9% 0.4rem 4.9%;
+      gap: 1rem;
+    }
+
+    .ubicacion, .rango-precio{
+      font-size: 5.2vw;
+      letter-spacing: 0.05em;
+    }
+
+    .conteiner-reservar-button{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0 1.6rem 0;
+    }
+
+    .reservar-button{
+      background-color: var(--buttons-color);
+      color: var(--background-color);
+      font-family: "Actor", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      font-style: normal;
+      border: none;
+      border-radius: 10px;
+      width: 77.9%;
+      padding: 1.25rem 0;
+      cursor: pointer;
+      font-size: 7vw;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .nav-sections hr{
+      height: 0.03rem; /* Establece la altura de la línea */
+      background-color: var(--dark-color); /* Establece el color de fondo de la línea */
+      border: none; /* Elimina cualquier borde preexistente */
+      width: 100%;
+      margin: 0.8rem 0;
+    }
+    .nav-sections{
+      text-align: center;
+      display: flex;
+      flex-direction:column;
+      align-items: center;
+    }
+
+    .nav-links{
+      display: flex;
+      flex-direction: row; /* Organiza los enlaces en fila */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-link{
+      color: var(--dark-color); /* Color del texto */
+      text-decoration: none; /* Remover subrayado de los enlaces */
+      margin: 0 8.4vw; /* Espaciado horizontal entre los enlaces */
+      font-size: 4.6vw;
+    }
+
+    .section-content-nosotros , .section-content-menu, .section-content-resenas{
+      margin: 0 1.5vw; 
+    }
+
+    .section-content-nosotros h1 {
+      margin: 2.6vw 1.5vw 2.2vw 1.5vw; /* Espacio a la izquierda de los h1 */
+      font-size: 4.8vw;
+    }
+
+    .section-content-nosotros span {
+      display: block; /* Coloca los span en bloque para que estén uno debajo del otro */
+      margin: 1.5vw 3.5vw 1.9vw 3.5vw; /* Espacio a la izquierda de los span */
+      font-size: 4.4vw;
+    }
+
+    .section-content-menu h1{
+      margin: 2.6vw 1.5vw 2.2vw 1.5vw; /* Espacio a la izquierda de los h1 */
+      font-size: 4.8vw;
+    }
+
+    .plato{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      padding: 1.5vw 0;
+    }
+
+    .plato span{
+      /*margin: 1.5vw 0 1.9vw 3.5vw; */
+      margin-left: 3.5vw;
+      font-size: 4.4vw;
+    }
+
+    .info{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; /* Alinea los elementos a la derecha */
+    }
+
+    .mas-info{
+      width: 4.5vw; 
+      height: 4.5vw;
+      margin-right: 1vw;
+    }
+
+    #precio{
+      display:flex;
+      font-size: 4.5vw;
+      margin-left: 3.5vw; /* Añadir un margen para separar el precio de la imagen */
     }
   </style>
 </body>
