@@ -4,13 +4,22 @@
   "description": "��#\u0000 \u0000O\u0000n\u0000T\u0000i\u0000m\u0000e\u0000O\u0000f\u0000i\u0000c\u0000i\u0000a\u0000l\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "devStarts": "nodemon index.js"
+    "devStarts": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strudelpapero/OnTimeOficial.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "mysql2": "^3.9.8"
+    "mysql2": "^3.9.8",
+    "pg": "^8.12.0"
   }
 }
