@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Oswald:wght@200..700&family=Roboto&display=swap');
 :root{
-    --primary-color: #10446D;
+    --primary-color: #64B5F6;
     --background-color: white;
     --dark-color: #000000;
+    --buttons-color: #EC6F53;
   }
 
 html {
     font-size: 62.5%; /*este porcentaje equivale a 10 px*/
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 *{
@@ -23,26 +24,31 @@ html {
 
 .conteiner-azul{
     background-color: var(--primary-color);
+    position: fixed;
     width: 100%;
     height:39px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .conteiner-hero{
     background-color: var(--background-color);
     width: 100%;
+    margin-top: 39px;
 }
 
 .hero{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem; 
+    padding: 1.2rem 2.3rem 0.8rem 2.3rem; 
 }
 
 .conteiner-logo{
     display : flex;
     align-items: center;
-    gap: .5rem;
+    gap: .3rem;
 }
 
 .logo-reloj {
@@ -53,16 +59,19 @@ html {
   .logo-nombre a {
     text-decoration: none;
     color : var(--primary-color);
-    font-size: 2rem; /*en mobile son 20px*/
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.6rem; /*en mobile son 20px*/
   }
 
   .registro-texto{
     font-size: 1.3rem;
     font-weight: bold;
+    font-family: 'Oswald', sans-serif;
   }
 
 .p1-titulo{
     background-color: var(--background-color);
+    font-family: 'Oswald', sans-serif;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -119,4 +128,17 @@ html {
 /* Estilos adicionales para ocultar la lupa en foco */
 .search-input:focus ~ .search-button {
   display: none;
+}
+
+.food-items{
+  display:grid;
+  position:relative;
+  grid-template-rows: auto lfr;
+  border-radius: 8px;
+}
+
+.food-items img{
+  position: relative;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
 }
