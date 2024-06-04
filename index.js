@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise')
 const app = express();
 const port = process.env.PORT || 3000;
 
-MYSQL_HOST = 'https://on-time-oficial-git-main-jeronimos-proyects-dcccfe57.vercel.app/'
+MYSQL_HOST = 'postgres://default:************@ep-tight-sea-a4v1n2xf.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require'
 MYSQL_PORT = 3306
 MYSQL_USER = 'root'
 MYSQL_PASSWARD = 'OnTime'
