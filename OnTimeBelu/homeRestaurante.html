@@ -19,6 +19,7 @@
       </div> 
     </div>
   </header>
+
   <div class="conteiner-imagen-plato" id="">
     <img class="imagen-plato" id="imagenPlato" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudGVzfGVufDB8fDB8fHww">
   </div>
@@ -62,56 +63,72 @@
     <div class="plato" id="plato1">
       <span>Sandwich de pollo</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn">
+          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
+        </button>
         <span id="precio">$9000</span>
       </div>
     </div>
     <div class="plato" id="plato2">
       <span>Wrap de lomo</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn" >
+          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
+        </button>
         <span id="precio">$9000</span>
       </div>
     </div>
     <div class="plato" id="plato3">
       <span>Milanesa de lomo</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn">
+          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
+        </button>
         <span id="precio">$900</span>
       </div>
     </div>
     <div class="plato" id="plato4">
       <span>Tarta de jamón</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn">
+          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
+        </button>
         <span id="precio">$9000</span>
       </div>
     </div>
     <div class="plato" id="plato5">
       <span>Tarta de Queso</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn">
+          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
+        </button>
         <span id="precio">$9000</span>
       </div>
     </div>
     <div class="plato" id="plato6">
       <span>Pesca del día</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn">
+          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
+        </button>
         <span id="precio">$9000</span>
       </div>
     </div>
     <div class="plato" id="plato7">
       <span>Pollo al verdeo</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn">
+          <img class="mas-info" src="Assets/icons/+.svg">
+        </button>
         <span id="precio">$9000</span>
       </div>
     </div>
     <div class="plato" id="plato8">
       <span>Ensalada Caesar</span>
       <div class="info">
-        <img class="mas-info" src="Assets/icons/+.svg">
+        <button type="button" class="mas-info-btn">
+          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
+        </button>
         <span id="precio">$9000</span>
       </div>
     </div>
@@ -121,6 +138,10 @@
     <h2>Reseñas</h2>
     <p>Opiniones de los clientes.</p>
   </section>
+
+  <div id="infoBox" class="info-box">
+    <p>Información adicional sobre el producto.</p>
+  </div>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
@@ -234,24 +255,24 @@
     }
 
     .section-content-nosotros h1 {
-      margin: 2.6vw 1.5vw 2.2vw 1.5vw; /* Espacio a la izquierda de los h1 */
+      margin: 2.9vw 1.5vw 2.6vw 1.5vw; /* Espacio a la izquierda de los h1 */
       font-size: 4.8vw;
     }
 
     .section-content-nosotros span {
       display: block; /* Coloca los span en bloque para que estén uno debajo del otro */
-      margin: 1.5vw 3.5vw 1.9vw 3.5vw; /* Espacio a la izquierda de los span */
+      margin: 2.8vw 3.5vw 2.8vw 3.5vw; /* Espacio a la izquierda de los span */
       font-size: 4.4vw;
     }
 
     .section-content-menu h1{
-      margin: 2.6vw 1.5vw 2.2vw 1.5vw; /* Espacio a la izquierda de los h1 */
+      margin: 2.9vw 1.5vw 2.6vw 1.5vw; /* Espacio a la izquierda de los h1 */
       font-size: 4.8vw;
     }
 
     .plato{
-      display: grid;
-      grid-template-columns: auto 1fr;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       padding: 1.5vw 0;
     }
@@ -265,20 +286,47 @@
     .info{
       display: flex;
       align-items: center;
-      justify-content: flex-end; /* Alinea los elementos a la derecha */
+      justify-content: flex-end;
+      gap: 2vw;
+       /* Alinea los elementos a la derecha */
     }
 
     .mas-info{
-      width: 4.5vw; 
+      width: 4.5vw;
       height: 4.5vw;
-      margin-right: 1vw;
     }
 
     #precio{
-      display:flex;
       font-size: 4.5vw;
-      margin-left: 3.5vw; /* Añadir un margen para separar el precio de la imagen */
     }
+
+    .mas-info-btn {
+    background: none; /* Elimina el fondo */
+    border: none; /* Elimina el borde */
+    padding: 0; /* Elimina el relleno */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mas-info-btn img {
+    width: 100%; /* Ajusta el tamaño de la imagen al tamaño del botón */
+  }
+
+  .info-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 999;
+  }
   </style>
+  <script src="script.js"></script>
 </body>
 </html>
