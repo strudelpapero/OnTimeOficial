@@ -137,14 +137,17 @@
   <section id="resenas" class="section-content-resenas">
     <h2>Reseñas</h2>
     <p>Opiniones de los clientes.</p>
-  </section>
+  </sect ion>
 
-  <div id="infoBox" class="info-box">
-    <img class="box-foto-plato" src="Assets/imgDeComida/comidaMexicana.jpg">
-    <h2 class="box-plato">Sandwich de pollo</h2>
-    <p class="box-info-plato">Pollo grillado con miel, limón y mostaza de dijon, hongos salteados, cebolla caramelizada, cherry confitado con ajo y queso parmesano en pan de campo de molde</p>
-    <button type="button" class="agregar-al-pedido-btn">Agregar al pedido</button>
+  <div class="conteiner-info-box">
+    <div id="infoBox" class="info-box">
+        <img class="box-foto-plato" src="">
+        <h1 class="box-plato">Sandwich de pollo</h1>
+        <p class="box-info-plato">Pollo grillado con miel, limón y mostaza de dijon, hongos salteados, cebolla caramelizada, cherry confitado con ajo y queso parmesano en pan de campo de molde</p>
+        <button type="button" class="agregar-al-pedido-btn">Agregar al pedido</button>
+      </div>
   </div>
+  
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
@@ -315,7 +318,7 @@
     .mas-info-btn img {
       width: 100%;
     }
-
+    /*
     .info-box {
       display: none;
       position: fixed;
@@ -372,6 +375,46 @@
       font-size: 4vw;
       max-width: 80%;
     }
+    
+    .conteiner-info-box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }*/
+
+    .conteiner-info-box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.25);
+      position:fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .info-box{
+      background-color: var(--background-color);
+      box-sizing: border-box;
+      width: 83%;
+      padding: 8% 5%;
+      margin: auto;
+    }
+
+    /*.box-foto-plato {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: 50%;
+      margin-bottom: 10px;
+      object-fit: cover;
+      border-radius: 5px;
+    }*/
   </style>
   <script src="script.js"></script>
 </body>

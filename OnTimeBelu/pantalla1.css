@@ -17,10 +17,10 @@ html {
     box-sizing: border-box;
 }
 
-.conteiner{
-    max-width: 120rem;
-    margin: 0 auto;    
-}
+/*.conteiner{
+  max-width: 120rem;
+  margin: 0 auto;    
+} */
 
 .conteiner-azul{
     background-color: var(--primary-color);
