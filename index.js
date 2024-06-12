@@ -1,33 +1,39 @@
-const express = require("express");
-const { Client } = require('pg');
-const app = express();
-const port = process.env.PORT || 9000;
+// Importa el cliente de Prisma
+import { withAccelerate } from '@prisma/extension-accelerate';
+import { PrismaClient } from '@prisma/client/edge';
 
-const POSTGRES_URL = "postgres://default:rZAb68xzXTNI@ep-tight-sea-a4v1n2xf-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require";
-const POSTGRES_USER = "default";
-const POSTGRES_HOST = "ep-tight-sea-a4v1n2xf-pooler.us-east-1.aws.neon.tech";
-const POSTGRES_PASSWORD = "rZAb68xzXTNI";
-const POSTGRES_DATABASE = "verceldb";
+const prisma = new PrismaClient().$extends(withAccelerate())
+// Crea una instancia del cliente de Prisma
 
-app.get('/', async (req, res) => {
-    try {
-        const client = new Client({
-            connectionString: POSTGRES_URL,
-            ssl: {
-                rejectUnauthorized: false
-            }
-        });
+await prisma.user.findMany({ 
+    where: { 
+      email: { 
+        contains: "alice@prisma.io",
+      },
+    },
+    cacheStrategy: { ttl: 60 },
+  });
+async function main() {
+  // Ejemplo de consulta: Crear un nuevo usuario
+  const newUser = await prisma.user.create({
+    data: {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+    },
+  });
+  console.log('Nuevo usuario creado:', newUser);
 
-        await client.connect();
-        const result = await client.query('SELECT 1 + 1 AS solution');
-        res.send(`La solución es: ${result.rows[0].solution}`);
-        await client.end();
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Database connection failed');
-    }
-});
+  // Ejemplo de consulta: Consultar todos los usuarios
+  const allUsers = await prisma.user.findMany();
+  console.log('Todos los usuarios:', allUsers);
+}
 
-app.listen(port, () => {
-    console.log(`Server running at port ${port}`);
-});
+main()
+  .catch((error) => {
+    console.error('Error al ejecutar consultas:', error);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
+
+
