@@ -59,8 +59,12 @@
 
   <section id="menu" class="section-content-menu">
     <h1>Menú</h1>
-    <div class="plato" id="plato1">
-      <span></span>
+
+    <div id="menu-items"></div>
+    <div id="menu-descripcion"></div>
+    <!-- 
+      <div class="plato" id="plato1">
+      <span>Sandwich de pollo</span>
       <div class="info">
         <button type="button" class="mas-info-btn">
           <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
@@ -76,61 +80,7 @@
         </button>
         <span id="precio">$9000</span>
       </div>
-    </div>
-    <div class="plato" id="plato3">
-      <span>Milanesa de lomo</span>
-      <div class="info">
-        <button type="button" class="mas-info-btn">
-          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
-        </button>
-        <span id="precio">$900</span>
-      </div>
-    </div>
-    <div class="plato" id="plato4">
-      <span>Tarta de jamón</span>
-      <div class="info">
-        <button type="button" class="mas-info-btn">
-          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
-        </button>
-        <span id="precio">$9000</span>
-      </div>
-    </div>
-    <div class="plato" id="plato5">
-      <span>Tarta de Queso</span>
-      <div class="info">
-        <button type="button" class="mas-info-btn">
-          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
-        </button>
-        <span id="precio">$9000</span>
-      </div>
-    </div>
-    <div class="plato" id="plato6">
-      <span>Pesca del día</span>
-      <div class="info">
-        <button type="button" class="mas-info-btn">
-          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
-        </button>
-        <span id="precio">$9000</span>
-      </div>
-    </div>
-    <div class="plato" id="plato7">
-      <span>Pollo al verdeo</span>
-      <div class="info">
-        <button type="button" class="mas-info-btn">
-          <img class="mas-info" src="Assets/icons/+.svg">
-        </button>
-        <span id="precio">$9000</span>
-      </div>
-    </div>
-    <div class="plato" id="plato8">
-      <span>Ensalada Caesar</span>
-      <div class="info">
-        <button type="button" class="mas-info-btn">
-          <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
-        </button>
-        <span id="precio">$9000</span>
-      </div>
-    </div>
+    </div>-->
   </section>
 
   <section id="resenas" class="section-content-resenas">
@@ -140,8 +90,8 @@
 
   <div class="conteiner-info-box" id="conteinerInfoBox">
     <div id="infoBox" class="info-box">
-        <button class="close-info-box">X</button>
-        <img class="box-foto-plato" src="">
+        <button class="close-info-box" id="closeInfoBox">X</button>
+        <img class="box-foto-plato" src="Assets/imgDeComida/comidaMexicana.jpg">
         <h1 class="box-plato">Sandwich de pollo</h1>
         <p class="box-info-plato">Pollo grillado con miel, limón y mostaza de dijon, hongos salteados, cebolla caramelizada, cherry confitado con ajo y queso parmesano en pan de campo de molde</p>
         <button type="button" class="agregar-al-pedido-btn">AGREGAR AL PEDIDO</button>
@@ -295,6 +245,8 @@
        /* Alinea los elementos a la derecha */
     }
 
+
+
     .mas-info{
       width: 4.5vw;
       height: 4.5vw;
@@ -388,7 +340,13 @@
       width: 100%;
       min-height: 100vh;
     }
-  
+
+
+    .show {
+      pointer-events: auto;
+      opacity:1;
+    }
+
     .info-box{
       background-color: var(--background-color);
       box-sizing: border-box;
@@ -454,5 +412,6 @@
     }
   </style>
   <script src="script.js"></script>
+  <script src="apiConnectionScript.js"></script>
 </body>
 </html>
