@@ -61,6 +61,7 @@
   <section id="menu" class="section-content-menu">
     <h1>Menú</h1>
     <div id="menu-items"></div>
+    <div id="menu-descripcion"></div>
     <!-- 
       <div class="plato" id="plato1">
       <span>Sandwich de pollo</span>
@@ -85,12 +86,12 @@
   <section id="resenas" class="section-content-resenas">
     <h2>Reseñas</h2>
     <p>Opiniones de los clientes.</p>
-  </sect ion>
+  </section>
 
-  <div class="conteiner-info-box">
+  <div class="conteiner-info-box" id="conteinerInfoBox">
     <div id="infoBox" class="info-box">
-        <button class="close-info-box">X</button>
-        <img class="box-foto-plato" src="">
+        <button class="close-info-box" id="closeInfoBox">X</button>
+        <img class="box-foto-plato" src="Assets/imgDeComida/comidaMexicana.jpg">
         <h1 class="box-plato">Sandwich de pollo</h1>
         <p class="box-info-plato">Pollo grillado con miel, limón y mostaza de dijon, hongos salteados, cebolla caramelizada, cherry confitado con ajo y queso parmesano en pan de campo de molde</p>
         <button type="button" class="agregar-al-pedido-btn">AGREGAR AL PEDIDO</button>
@@ -246,6 +247,8 @@
        /* Alinea los elementos a la derecha */
     }
 
+
+
     .mas-info{
       width: 4.5vw;
       height: 4.5vw;
@@ -346,6 +349,11 @@
       height: 100%;
       width: 100%;
       min-height: 100vh;
+    }
+
+    .show {
+      pointer-events: auto;
+      opacity:1;
     }
 
     .info-box{
