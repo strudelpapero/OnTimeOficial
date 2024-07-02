@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -61,7 +60,7 @@
   <section id="menu" class="section-content-menu">
     <h1>Menú</h1>
     <div class="plato" id="plato1">
-      <span>Sandwich de pollo</span>
+      <span></span>
       <div class="info">
         <button type="button" class="mas-info-btn">
           <img class="mas-info" src="Assets/icons/+.svg" alt="Mas informacion">
@@ -137,9 +136,9 @@
   <section id="resenas" class="section-content-resenas">
     <h2>Reseñas</h2>
     <p>Opiniones de los clientes.</p>
-  </sect ion>
+  </section>
 
-  <div class="conteiner-info-box">
+  <div class="conteiner-info-box" id="conteinerInfoBox">
     <div id="infoBox" class="info-box">
         <button class="close-info-box">X</button>
         <img class="box-foto-plato" src="">
@@ -148,9 +147,7 @@
         <button type="button" class="agregar-al-pedido-btn">AGREGAR AL PEDIDO</button>
       </div>
   </div>
-  
-
-  <style>
+    <style>
     @import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
     :root{
       --primary-color: #64B5F6;
@@ -308,7 +305,7 @@
     }
 
     .mas-info-btn {
-      background: none;
+      background: transparent;
       border: none;
       padding: 0;
       cursor: pointer;
@@ -319,10 +316,10 @@
     .mas-info-btn img {
       width: 100%;
     }
-    /*
+    
     .info-box {
-      display: none;
-      position: fixed;
+      display: flex;
+      position: relative;
       top: 50%;
       left: 50%;
       width: 83.3%;
@@ -376,14 +373,6 @@
       font-size: 4vw;
       max-width: 80%;
     }
-    
-    .conteiner-info-box{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-    }*/
 
     .conteiner-info-box{
       display: flex;
@@ -399,7 +388,7 @@
       width: 100%;
       min-height: 100vh;
     }
-
+  
     .info-box{
       background-color: var(--background-color);
       box-sizing: border-box;
@@ -409,7 +398,7 @@
       border-radius: 6px;
       text-align: center;
     }
-
+    
     .info-box h1{
       font-size: 4.8vw;
       font-weight: 100;
@@ -421,6 +410,7 @@
     }
 
     .agregar-al-pedido-btn {
+      display: block;
       background-color: var(--buttons-color);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       color: var(--background-color);
@@ -437,7 +427,12 @@
       max-width: 80%;
     }
 
+    .agregar-al-pedido-btn:hover {
+      background: darken(var(--buttons-color), 10%);
+    }
+
     .close-info-box{
+      position: absolute;
       background-color: var(--background-color);
       font-weight: 550;
       font-size: 4.5vw;
@@ -448,7 +443,7 @@
       top: 0;
       padding-left: 95%;
     }
-    /*.box-foto-plato {
+    .box-foto-plato {
       width: 100%;
       height: auto;
       max-width: 100%;
@@ -456,7 +451,7 @@
       margin-bottom: 10px;
       object-fit: cover;
       border-radius: 5px;
-    }*/
+    }
   </style>
   <script src="script.js"></script>
 </body>

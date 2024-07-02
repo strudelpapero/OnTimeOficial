@@ -1,24 +1,14 @@
-/*document.getElementById('searchInput').addEventListener('focus', function() {
-    document.getElementById('searchButton').style.display = 'none';
-  });
-  
-  document.getElementById('searchInput').addEventListener('blur', function() {
-    document.getElementById('searchButton').style.display = 'flex';
-  });
-  */
-  var masInfoBtn = document.querySelectorAll('.mas-info-btn');
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('/api/platos');
+      const platos = await response.json();
 
-  masInfoBtn.forEach(function(btn) {
-      // Agregar un evento de clic a cada botón
-      btn.addEventListener('click', function() {
-          // Mostrar el recuadro de información cuando se hace clic en el botón
-          infoBox.style.display = 'block';
-      });
-  });
-  
-  infoBox.addEventListener('click', function(e) {
-      if (e.target === this) {
-          // Ocultar el recuadro de información si se hace clic fuera de él
-          infoBox.style.display = 'none';
+      const plato1 = platos.find(plato => plato.id === 1); // Ajusta esto según el ID del plato que desees mostrar
+      if (plato1) {
+        document.querySelector('#plato1 span').textContent = plato1.nombre;
+        document.getElementById('precio').textContent = `$${plato1.precio}`;
       }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   });
