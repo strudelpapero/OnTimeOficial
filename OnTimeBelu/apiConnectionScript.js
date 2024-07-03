@@ -18,6 +18,7 @@ const renderDishes = (dishes) => {
     const menuItemsContainer = document.getElementById('menu-items');
     menuItemsContainer.innerHTML = ''; // Limpia el contenedor antes de agregar los nuevos elementos
 
+
     dishes.forEach(dish => {
         const dishElement = document.createElement('div');
         dishElement.classList.add('plato');
