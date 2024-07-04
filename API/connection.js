@@ -1,6 +1,7 @@
 const { Pool } = require('pg');
 const express = require('express')
 const cors = require('cors'); // Importa el paquete cors
+const open = require('open'); // Importa el paquete open
 
 require('dotenv').config();
 
