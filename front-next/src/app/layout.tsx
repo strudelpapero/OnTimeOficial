@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Header from '../components/header';
 import "./globals.css";
-
 
 export const metadata: Metadata = {
   title: "OnTime",
@@ -18,10 +18,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-const page = () => {
-  return (
-    <div className="fixed w-full h-[39px] top-0 left-0 z-[1000] bg-primaryC"></div>
-  )
-}
-
