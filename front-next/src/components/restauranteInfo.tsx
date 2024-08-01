@@ -1,7 +1,7 @@
 // src/components/Restaurante.tsx
 import Image from 'next/image';
-import Header from './Header';
-import MasInfoBtn from './MasInfoBtn';
+import Header from './header';
+import MasInfoBtn from './masInfoBtn';
 
 interface Plato {
   id: number;
