@@ -1,20 +1,20 @@
+// components/Header/Header.tsx
 import Image from 'next/image';
-import logoReloj from '/public/Assets/icons/logoReloj.svg';
+import styles from './header.module.css';
+import logoReloj from '/public/Assets/icons/logo-reloj.svg';
 
-const Header = () => {
-    return (
-      <header>
-        <div className="conteiner-azul"></div>
-        <div className="conteiner-hero">
-          <div className="conteiner hero">
-            <div className="conteiner-logo">
-              <a href="/"><Image className="logo-reloj" src={logoReloj} alt="Logo" width={50} height={50} /></a>
-              <span className="logo-nombre"><a href="/">N TIME</a></span>
-            </div>
-          </div> 
+const Header = () => (
+  <header className={styles.header}>
+    <div className={styles.conteinerAzul}></div>
+    <div className={styles.conteinerHero}>
+      <div className={styles.hero}>
+        <div className={styles.conteinerLogo}>
+          <a href="/"><Image src={logoReloj} alt="Logo" width={50} height={50} className={styles.logoReloj} /></a>
+          <span className={styles.logoNombre}><a href="/">N TIME</a></span>
         </div>
-      </header>
-    );
-  };
-  
-  export default Header;
+      </div>
+    </div>
+  </header>
+);
+
+export default Header;

@@ -5,7 +5,10 @@ import { useState } from 'react';
 import RegisterModal from '../components/registerModal';
 import LoginModal from '../components/loginModal';
 import Image from 'next/image';
+import Link from 'next/link';
 import logoReloj from '/public/Assets/icons/logoReloj.svg';
+import RestaurantePrincipal from '@/components/restaurantePrincipal';
+import RestauranteInfo from '../components/restauranteInfo.tsx';
 
 const Home = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -27,13 +30,13 @@ const Home = () => {
       <div className="conteiner-hero">
         <div className="hero">
           <div className="conteiner-logo">
-          <a href="/"><Image className="logo-reloj" src={logoReloj} alt="Logo" width={50} height={50} /></a>
-          <span className="logo-nombre"><a href="/">N TIME</a></span>
+            <a href="/"><Image className="logo-reloj" src={logoReloj} alt="Logo" width={50} height={50} /></a>
+            <span className="logo-nombre"><a href="/">N TIME</a></span>
           </div>
           <div className="conteiner-registro">
-          <span className="registro-texto" onClick={openRegisterModal}>REGISTRAR RESTAURANTE</span>
+            <span className="registro-texto" onClick={openRegisterModal}>REGISTRAR RESTAURANTE</span>
           </div>
-        </div> 
+        </div>
       </div>
 
       <div className="p1-titulo">
@@ -48,13 +51,12 @@ const Home = () => {
         </form>
       </div>
       <div className="menu">
-        <div className="food-items">
-          <img src="/Assets/imgDeComida/comidaMexicana.jpg" alt="Comida Mexicana" />
-        </div>
+        <RestaurantePrincipal />
       </div>
-       {/* Modal para el registro */}
-       <RegisterModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} onLoginClick={openLoginModal} />
-      
+
+      {/* Modal para el registro */}
+      <RegisterModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} onLoginClick={openLoginModal} />
+
       {/* Modal para el login */}
       <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </div>
