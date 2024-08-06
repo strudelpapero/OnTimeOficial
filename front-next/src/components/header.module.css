@@ -1,4 +1,4 @@
-.conteiner-azul {
+.conteinerAzul {
     background-color: var(--primary-color);
     position: fixed;
     width: 100%;
@@ -8,7 +8,7 @@
     z-index: 1000;
   }
   
-  .conteiner-hero {
+  .conteinerHero {
     background-color: var(--background-color);
     width: 100%;
     margin-top: 39px;
@@ -24,17 +24,17 @@
   }
   
   
-  .conteiner-logo {
+  .conteinerLogo {
     display: flex;
     align-items: center;
     gap: 0.3rem;
   }
   
-  .logo-reloj {
+  .logoReloj {
     width: 3.1rem;
   }
   
-  .logo-nombre a {
+  .logoNombre a {
     text-decoration: none;
     color: var(--primary-color);
     font-family: 'Oswald', sans-serif;
