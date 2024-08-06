@@ -10,7 +10,7 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
 });
 
-app.get('/api/platos', async (req, res) => {
+app.get('/getDishes', async (req, res) => {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM Platos');
@@ -21,6 +21,11 @@ app.get('/api/platos', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+//Ejemplo cuando se accede a /ping devulve /pong
+app.get("/ping", (req, res) => {
+  res.json("pong")
+} )
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
