@@ -1,6 +1,8 @@
 // pages/restaurants/[id].tsx
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Header from '@/components/header';
+
 
 const Restaurant = () => {
   const router = useRouter();
@@ -23,16 +25,8 @@ const Restaurant = () => {
   }
 
   return (
-    <div>
-      <div className="conteiner-azul"></div>
-      <div className="conteiner-hero">
-        <div className="conteiner hero">
-          <div className="conteiner-logo">
-            <a href="/"><Image className="logo-reloj" src="/Assets/icons/logoReloj.svg" alt="Logo" width={50} height={50} /></a>
-            <span className="logo-nombre"><a href="/">N TIME</a></span>
-          </div>
-        </div> 
-      </div>
+    <>
+      <Header />
       
       <div className="conteiner-imagen-resto">
         <img className="imagen-resto" src={restaurant.imgSrc} alt={restaurant.name} />
