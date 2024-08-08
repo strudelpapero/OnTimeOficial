@@ -1,26 +1,29 @@
-// components/RestaurantePrincipal.tsx
-import Image from 'next/image';
-import Link from 'next/link';
-import comidaMexicana from '/public/Assets/comidaMexicana.jpg';
+// src/components/RestaurantePrincipal.tsx
+import RestauranteItem from './RestauranteItem';
 
+interface Restaurante {
+  id: number;
+  name: string;
+  image: string;
+}
 
-const RestaurantePrincipal = () => {
-    return (
-      <div className="restaurante-principal">
-        <Link href="/restaurants/amayta">
-          <div className="restaurante-link">
-            <Image
-              src={comidaMexicana}
-              alt="Amayta Patisserie"
-              width={600}
-              height={400}
-              className="restaurante-imagen"
-            />
-            <div className="restaurante-nombre">AMAYTA PATISSERIE</div>
-          </div>
-        </Link>
-      </div>
-    );
-  };
-  
-  export default RestaurantePrincipal;
+interface RestaurantePrincipalProps {
+  restaurantes: Restaurante[];
+}
+
+const RestaurantePrincipal = ({ restaurantes }: RestaurantePrincipalProps) => {
+  return (
+    <div className="restaurantes-list">
+      {restaurantes.map(restaurante => (
+        <RestauranteItem
+          key={restaurante.id}
+          id={restaurante.id}
+          name={restaurante.name}
+          image={restaurante.image}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default RestaurantePrincipal;

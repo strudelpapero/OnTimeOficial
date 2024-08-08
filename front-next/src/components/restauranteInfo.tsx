@@ -1,7 +1,8 @@
-// src/components/Restaurante.tsx
-import Image from 'next/image';
+// src/components/restauranteInfo.tsx
+import Image, { StaticImageData } from 'next/image';
 import Header from './header';
 import MasInfoBtn from './masInfoBtn';
+
 
 interface Plato {
   id: number;
@@ -13,11 +14,11 @@ interface RestauranteProps {
   nombreResto: string;
   ubicacion: string;
   rangoPrecio: string;
-  imagenResto: string;
+  imagenResto: string | StaticImageData;
   platos: Plato[];
 }
 
-const Restaurante = ({ nombreResto, ubicacion, rangoPrecio, imagenResto, platos }: RestauranteProps) => {
+const RestauranteInfo = ({ nombreResto, ubicacion, rangoPrecio, imagenResto, platos }: RestauranteProps) => {
   return (
     <>
       <Header />
@@ -73,4 +74,4 @@ const Restaurante = ({ nombreResto, ubicacion, rangoPrecio, imagenResto, platos 
   );
 };
 
-export default Restaurante;
+export default RestauranteInfo;

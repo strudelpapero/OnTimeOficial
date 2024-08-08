@@ -1,10 +1,10 @@
 // components/Header/Header.tsx
 import Image from 'next/image';
 import styles from './header.module.css';
-import logoReloj from '/public/Assets/icons/logo-reloj.svg';
+import logoReloj from '../public/Assets/icons/logoReloj.svg';
 
 const Header = () => (
-  <header className={styles.header}>
+  <header>
     <div className={styles.conteinerAzul}></div>
     <div className={styles.conteinerHero}>
       <div className={styles.hero}>
