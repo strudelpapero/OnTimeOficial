@@ -1,13 +1,14 @@
 // app/page.tsx
-import { useState } from 'react';
+"use client";  // ← Añade esto al inicio del archivo
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import RegisterModal from '@/components/registerModal';
 import LoginModal from '@/components/loginModal';
+import Link from 'next/link'; 
 import Image from 'next/image';
-import RestaurantePrincipal from '@/components/restaurantePrincipal';
-import logoReloj from '/public/Assets/icons/logoReloj.svg';
-import Header from '@/components/header';
-import comidaMexicana from '/public/Assets/comidaMexicana.jpg'; // Placeholder image
-import comidaItaliana from '/public/Assets/comidaItaliana.jpg'; // Placeholder image
+import LogoReloj from '/public/Assets/icons/logoReloj.svg';
+import Lupita from '/public/Assets/icons/lupita.svg'
 
 const Home = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -22,12 +23,14 @@ const Home = () => {
   };
   const closeLoginModal = () => setIsLoginModalOpen(false);
 
-  // Simular datos desde una base de datos o API
-  const restaurantes = [
-    { id: 1, name: 'AMAYTA PATISSERIE', image: comidaMexicana },
-    { id: 2, name: 'ITALIANITA', image: comidaItaliana },
-    // Añade más restaurantes según sea necesario
-  ];
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    // Obtén los datos de los restaurantes desde tu API
+    axios.get('/api/restaurants')
+      .then(response => setRestaurants(response.data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   return (
     <div>
@@ -36,7 +39,7 @@ const Home = () => {
       <div className="conteiner-hero">
         <div className="hero">
           <div className="conteiner-logo">
-            <a href="/"><Image className="logo-reloj" src={logoReloj} alt="Logo" width={50} height={50} /></a>
+            <a href="/"><Image className="logo-reloj" src={LogoReloj} alt="Logo" width={50} height={50} /></a>
             <span className="logo-nombre"><a href="/">N TIME</a></span>
           </div>
           <div className="conteiner-registro">
@@ -52,13 +55,20 @@ const Home = () => {
         <form className="search-form">
           <input type="search" placeholder="Buscar..." className="search-input" id="searchInput" />
           <button type="submit" className="search-button" id="searchButton">
-            <Image className="search-lupita" src="/public/Assets/icons/lupita.svg" alt="Buscar" width={20} height={20} />
+            <Image className="search-lupita" src={Lupita} alt="Buscar" width={20} height={20} />
           </button>
         </form>
       </div>
-      <div className="menu">
-        <RestaurantePrincipal restaurantes={restaurantes} />
-      </div>
+      <div className="restaurant-list">
+          {restaurants.map(restaurant => (
+            <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
+              <a className="restaurante-principal">
+                <img className="restaurante-imagen" src={restaurant.foto} alt={restaurant.nombre} />
+                <span className="restaurante-nombre">{restaurant.nombre}</span>
+              </a>
+            </Link>
+          ))}
+        </div>
 
       {/* Modal para el registro */}
       <RegisterModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} onLoginClick={openLoginModal} />
