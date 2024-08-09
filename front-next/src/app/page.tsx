@@ -8,11 +8,34 @@ import LoginModal from '@/components/loginModal';
 import Link from 'next/link'; 
 import Image from 'next/image';
 import LogoReloj from '/public/Assets/icons/logoReloj.svg';
-import Lupita from '/public/Assets/icons/lupita.svg'
+import Lupita from '/public/Assets/icons/lupita.svg';
+import { restaurantData } from '@/dataImprovisado/RestaurantData';
+
+//declarar el tipo de los datos de 'restauranteData'
+export interface MenuItem {
+  name: string;
+  price: string;
+}
+
+export interface Restaurant {
+  id: string;
+  nombre: string;
+  foto: string;
+  direccion: string;
+  rangoPrecio: string;
+  menu: MenuItem[];
+}
+
 
 const Home = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+
+  useEffect(() => {
+    // En lugar de obtener datos de una API, usa los datos simulados
+    setRestaurants(restaurantData);
+  }, []);
 
   const openRegisterModal = () => setIsRegisterModalOpen(true);
   const closeRegisterModal = () => setIsRegisterModalOpen(false);
@@ -23,14 +46,15 @@ const Home = () => {
   };
   const closeLoginModal = () => setIsLoginModalOpen(false);
 
-  const [restaurants, setRestaurants] = useState([]);
+//PARA CUANDO HAYA API
+  //useEffect(() => {
+  //  // Obtén los datos de los restaurantes desde tu API
+  //  axios.get('/api/restaurants')
+  //    .then(response => setRestaurants(response.data))
+  //    .catch(error => console.error('Error fetching data:', error));
+  //}, []);
 
-  useEffect(() => {
-    // Obtén los datos de los restaurantes desde tu API
-    axios.get('/api/restaurants')
-      .then(response => setRestaurants(response.data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+
 
   return (
     <div>
@@ -62,10 +86,10 @@ const Home = () => {
       <div className="restaurant-list">
           {restaurants.map(restaurant => (
             <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
-              <a className="restaurante-principal">
+              <div className="restaurante-principal">
                 <img className="restaurante-imagen" src={restaurant.foto} alt={restaurant.nombre} />
                 <span className="restaurante-nombre">{restaurant.nombre}</span>
-              </a>
+              </div>
             </Link>
           ))}
         </div>

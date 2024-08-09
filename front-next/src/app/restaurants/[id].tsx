@@ -2,19 +2,31 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '@/components/header';
+import { getRestaurantById} from '@/dataImprovisado/RestaurantData'  // Importa la función que obtiene los datos simulados
+import { Restaurant } from '@/app/page'; // Asegúrate de cambiar la ruta al archivo correcto
+
 
 const RestaurantDetails = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [restaurant, setRestaurant] = useState(null);
+	const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
 
-  useEffect(() => {
-    if (id) {
-      axios.get(`/api/restaurants/${id}`)
-        .then(response => setRestaurant(response.data))
-        .catch(error => console.error('Error fetching data:', error));
-    }
-  }, [id]);
+// para la api real
+ // useEffect(() => {
+ //   if (id) {
+ //     axios.get(`/api/restaurants/${id}`)
+ //       .then(response => setRestaurant(response.data))
+ //       .catch(error => console.error('Error fetching data:', error));
+ //   }
+ // }, [id]);
+
+//para la base de datos improvisada
+	useEffect(() => {
+		if (id) {
+			const fetchedRestaurant = getRestaurantById(id as string);  // Utiliza los datos simulados
+			setRestaurant(fetchedRestaurant || null);
+		}
+	}, [id]);
 
   if (!restaurant) {
     return <div>Loading...</div>;
