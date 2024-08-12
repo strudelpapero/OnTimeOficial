@@ -1,7 +1,7 @@
 // components/Header/Header.tsx
 import Image from 'next/image';
 import styles from './header.module.css';
-import logoReloj from '../public/Assets/icons/logoReloj.svg';
+import logoReloj from '/public/Assets/icons/logoReloj.svg'
 
 const Header = () => (
   <header>

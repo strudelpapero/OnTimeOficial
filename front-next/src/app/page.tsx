@@ -2,7 +2,7 @@
 "use client";  // ← Añade esto al inicio del archivo
 
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import RegisterModal from '@/components/registerModal';
 import LoginModal from '@/components/loginModal';
 import Link from 'next/link'; 
@@ -10,21 +10,7 @@ import Image from 'next/image';
 import LogoReloj from '/public/Assets/icons/logoReloj.svg';
 import Lupita from '/public/Assets/icons/lupita.svg';
 import { restaurantData } from '@/dataImprovisado/RestaurantData';
-
-//declarar el tipo de los datos de 'restauranteData'
-export interface MenuItem {
-  name: string;
-  price: string;
-}
-
-export interface Restaurant {
-  id: string;
-  nombre: string;
-  foto: string;
-  direccion: string;
-  rangoPrecio: string;
-  menu: MenuItem[];
-}
+import { Restaurant } from '@/types'; // Nueva importación de la interfaz
 
 
 const Home = () => {
