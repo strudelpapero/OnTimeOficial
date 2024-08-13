@@ -43,7 +43,7 @@ const Home = () => {
 
 
   return (
-    <div>
+    <div className="conteiner">
       <div className="conteiner-azul"></div>
 
       <div className="conteiner-hero">
@@ -57,7 +57,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       <div className="p1-titulo">
         <h1 className="titulo-busqueda">Elegi donde comer!</h1>
       </div>
@@ -79,7 +78,7 @@ const Home = () => {
             </Link>
           ))}
         </div>
-
+            
       {/* Modal para el registro */}
       <RegisterModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} onLoginClick={openLoginModal} />
 

@@ -11,6 +11,7 @@ const RegisterModal = ({ isOpen, onClose, onLoginClick }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>Registro</h2>
+          <button onClick={onClose}>X</button>
         </div>
         <div className="modal-body">
           <form>
