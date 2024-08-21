@@ -1,12 +1,11 @@
-// app.js
-const express = require('express');
-const { Pool } = require('pg');
-require('dotenv').config();
+import express from "express"
+import Pool from "pg"
+import {} from 'dotenv/config'
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const pool = new Pool({
+const pool = new Pool.Pool({
   connectionString: process.env.POSTGRES_URL,
 });
 
