@@ -48,6 +48,30 @@ app.get('/getInfo_RestyPlato/:id', async (req, res) => {
   }
 });
 
+app.post('/newplato', async (req, res) => {
+  const {
+    nombre,
+    descripcion,
+    precio,
+    id_rest,
+    disponible,
+    vegetariano,
+    sin_gluten,
+    kosher,
+  } = req.body;
+  try {
+    const client = await pool.connect();
+    const result = await client.query(`INSERT INTO platos (nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
+    `);
+    client.release();
+    res.json(result.rows);
+    res.status(201).send('Plato agregado exitosamente');
+  } catch (err) {
+    console.error('Error fetching data:', err);
+    res.status(500).send('Server Error');
+  }
+});
 //Ejemplo cuando se accede a /ping devulve /pong
 app.get("/ping", (req, res) => {
   res.json("pong")
