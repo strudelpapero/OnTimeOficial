@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 //import axios from 'axios';
+import { useRouter } from 'next/navigation'; // Importa useRouter para la navegación
 import RegisterModal from '@/components/registerModal';
 import LoginModal from '@/components/loginModal';
 import Link from 'next/link'; 
@@ -14,6 +15,7 @@ import { Restaurant } from '@/types'; // Nueva importación de la interfaz
 
 
 const Home = () => {
+  const router = useRouter();  // ← Aquí es donde usas `useRouter`
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
@@ -40,7 +42,15 @@ const Home = () => {
   //    .catch(error => console.error('Error fetching data:', error));
   //}, []);
 
+  const handleRegister = (restaurantId: string) => {
+    closeRegisterModal();
+    router.push(`/restaurants/${restaurantId}`);
+  };
 
+  const handleLogin = (restaurantId: string) => {
+    closeLoginModal();
+    router.push(`/restaurants/${restaurantId}`);
+  };
 
   return (
     <div className="conteiner">
