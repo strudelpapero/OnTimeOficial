@@ -42,6 +42,7 @@ app.get('/getInfo_RestyPlato/:id', async (req, res) => {
       r.nombre AS restaurante,
       r.direccion,
       r.calle,
+      r.foto
       p.nombre AS plato,
       p.precio
   FROM 
@@ -70,12 +71,13 @@ app.post('/newplato', async (req, res) => {
     vegetariano,
     sin_gluten,
     kosher,
+    foto
   } = req.body;
   try {
     const client = await pool.connect();
-    const result = await client.query(`INSERT INTO platos (nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
-    `);
+    const result = await client.query(`INSERT INTO platos (nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher, foto)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+    `[nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher, foto]);
     client.release();
     res.json(result.rows);
     res.status(201).send('Plato agregado exitosamente');
@@ -123,13 +125,13 @@ app.post('/updateplatoNombrePrecio/:id', async (req, res) => {
 
 app.post('/updateplatoDescripcionOpcionAlimentaria/:idplato', async (req, res) => {
   const {idplato} = req.params
-  const {descripcion, vegetariano, sin_gluten, kosher} = req.body;
+  const {descripcion, vegetariano, sin_gluten, kosher, foto} = req.body;
   try {
     const client = await pool.connect();
     const result = await client.query(`UPDATE platos
-    SET descripcion = $1, vegetariano = $2, sin_gluten = $3, kosher = $4
-    WHERE id = $5;
-    ` [descripcion, vegetariano, sin_gluten, kosher, id]);
+    SET descripcion = $1, vegetariano = $2, sin_gluten = $3, kosher = $4, foto = $5
+    WHERE id = $6;
+    ` [descripcion, vegetariano, sin_gluten, kosher, foto, id]);
     client.release();
     res.json(result.rows);
     res.status(201).send('Plato modificado exitosamente');
