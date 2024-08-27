@@ -1,4 +1,5 @@
 // app.js
+const cors = require('corse')
 const express = require('express');
 const { Pool } = require('pg');
 require('dotenv').config();
@@ -10,6 +11,13 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
 });
 
+app.use(corse({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
+
+app.use(express.json());
 /*app.get('/getDishes', async (req, res) => {
   try {
     const client = await pool.connect();
@@ -21,18 +29,19 @@ const pool = new Pool({
     res.status(500).send('Server Error');
   }
 });*/
-app.get('/getCantRestaurantes', async (req, res) => {
+app.get('/getRestaurantes', async (req, res) => {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT COUNT(*) FROM restaurante');
+    const result = await client.query('SELECT id, nombre, foto FROM restaurante');
     client.release();
-    res.json({ length: result.rows[0].count });
+    res.json(result.rows);
   } catch (err) {
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
 });
 
+app.get('/getInfoNosotros')
 
 app.get('/getInfo_RestyPlato/:id', async (req, res) => {
   const { id } = req.params;
@@ -70,12 +79,11 @@ app.post('/newplato', async (req, res) => {
     disponible,
     vegetariano,
     sin_gluten,
-    kosher,
-    foto
+    kosher
   } = req.body;
   try {
     const client = await pool.connect();
-    const result = await client.query(`INSERT INTO platos (nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher, foto)
+    const result = await client.query(`INSERT INTO platos (nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
     `[nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher, foto]);
     client.release();
