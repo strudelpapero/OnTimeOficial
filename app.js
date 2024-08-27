@@ -85,7 +85,7 @@ app.post('/newplato', async (req, res) => {
     const client = await pool.connect();
     const result = await client.query(`INSERT INTO platos (nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
-    `[nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher, foto]);
+    `[nombre, descripcion, precio, id_rest, disponible, vegetariano, sin_gluten, kosher]);
     client.release();
     res.json(result.rows);
     res.status(201).send('Plato agregado exitosamente');
