@@ -1,5 +1,5 @@
 // app.js
-const cors = require('corse')
+const cors = require('cors')
 const express = require('express');
 const { Pool } = require('pg');
 require('dotenv').config();
@@ -11,7 +11,7 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
 });
 
-app.use(corse({
+app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['GET', 'POST'],
   credentials: true,
@@ -133,13 +133,13 @@ app.post('/updateplatoNombrePrecio/:id', async (req, res) => {
 
 app.post('/updateplatoDescripcionOpcionAlimentaria/:idplato', async (req, res) => {
   const {idplato} = req.params
-  const {descripcion, vegetariano, sin_gluten, kosher, foto} = req.body;
+  const {descripcion, vegetariano, sin_gluten, kosher} = req.body;
   try {
     const client = await pool.connect();
     const result = await client.query(`UPDATE platos
-    SET descripcion = $1, vegetariano = $2, sin_gluten = $3, kosher = $4, foto = $5
-    WHERE id = $6;
-    ` [descripcion, vegetariano, sin_gluten, kosher, foto, id]);
+    SET descripcion = $1, vegetariano = $2, sin_gluten = $3, kosher = $4
+    WHERE id = $5;
+    ` [descripcion, vegetariano, sin_gluten, kosher, id]);
     client.release();
     res.json(result.rows);
     res.status(201).send('Plato modificado exitosamente');
