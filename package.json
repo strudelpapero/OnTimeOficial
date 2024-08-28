@@ -1,36 +1,29 @@
 {
-  "name": "ontimeoficial",
-  "version": "1.0.0",
-  "description": "��#\u0000 \u0000O\u0000n\u0000T\u0000i\u0000m\u0000e\u0000O\u0000f\u0000i\u0000c\u0000i\u0000a\u0000l\u0000\r\u0000 \u0000",
-  "main": "app.js",
+  "name": "front-next",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "devStarts": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "engines": {
-    "node": "18.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/strudelpapero/OnTimeOficial.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.15.0",
-    "@prisma/extension-accelerate": "^1.1.0",
-    "@types/axios": "^0.14.0",
-    "@vercel/blob": "^0.23.4",
-    "axios": "^1.7.5",
-    "cors": "^2.8.5",
     "create-next-app": "^14.2.3",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "multer": "^1.4.5-lts.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.9.8",
-    "open": "^10.1.0",
-    "pg": "^8.12.0"
+    "g": "^2.0.1",
+    "next": "14.2.3",
+    "npm": "^10.8.1",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }

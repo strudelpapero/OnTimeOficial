@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const upload = multer({ dest: 'uploads/' });
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
@@ -191,10 +192,8 @@ app.post('/updateMetodoPago/:idrest', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-//Ejemplo cuando se accede a /ping devulve /pong
-app.get("/ping", (req, res) => {
-  res.json("pong")
-} )
+
+//ejemplo de subida de foto
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
