@@ -15,7 +15,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 app.post('/upload', upload.single('foto'), async (req, res) => {
-  const foto = req.file.buffer; // El archivo subida
+  const foto = req.file.buffer; // El archivo
   try {
     const client = await pool.connect();
     await client.query(

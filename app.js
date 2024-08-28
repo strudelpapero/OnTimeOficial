@@ -1,5 +1,5 @@
 // app.js
-const cors = require('corse')
+const cors = require('cors')
 const express = require('express');
 const { Pool } = require('pg');
 require('dotenv').config();
@@ -11,7 +11,7 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
 });
 
-app.use(corse({
+app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['GET', 'POST'],
   credentials: true,
