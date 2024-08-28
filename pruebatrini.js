@@ -20,7 +20,6 @@ app.post('/uploadFoto/:id', upload.single('foto'), async (req, res) => {
     // Obtener el link de la imagen subida
     const imageUrl = `https://vercel.app/_next/image?url=${blobResponse.data.url}&w=750&q=75`;
 
-    // Actualizar la columna 'foto' en la tabla 'restaurante'
     const client = await pool.connect();
     await client.query(
       'UPDATE restaurante SET foto = $1 WHERE id = $2',
