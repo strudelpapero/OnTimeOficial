@@ -29,7 +29,18 @@ const RestaurantDetails = () => {
  //       .catch(error => console.error('Error fetching data:', error));
  //   }
  // }, [id]);
+  const [selectedDish, setSelectedDish] = useState(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const openPopup = (dish) => {
+    setSelectedDish(dish);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedDish(null);
+  };
 //para la base de datos improvisada
 	useEffect(() => {
 		if (id) {
@@ -84,17 +95,28 @@ const RestaurantDetails = () => {
         {restaurant.menu.map((item, index) => (
           <li key={index}>
             <div className="plato">
-              <span>{item.name}</span>
+              <span>{item.name}</span> 
+              <span className="descripcion">
+                {item.description.length > 50 ? `${item.description.substring(0, 50)}...` : item.description}
+                <button type="button" className="mas-info-btn" onClick={() => openPopup(item)}>más</button>
+              </span>
               <div className="info">
-                <button type="button" className="mas-info-btn">
-                  <img className="mas-info" src="/Assets/icons/+.svg" alt="Más información" />
-                </button>
                 <span className="precio">{item.price}</span>
               </div>
             </div>
           </li>
         ))}
       </ul>
+      {isPopupOpen && selectedDish && (
+        <div className="popup-overlay" onClick={closePopup}>
+          <div className="popup" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={closePopup}>X</button>
+            <img src={selectedDish.imageUrl} alt={selectedDish.name} className="popup-image" />
+            <h2>{selectedDish.name}</h2>
+            <p>{selectedDish.description}</p>
+          </div>
+        </div>
+      )}
     </section>
 
     <section id="resenas" className="section-content-resenas">

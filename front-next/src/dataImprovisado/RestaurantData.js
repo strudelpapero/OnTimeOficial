@@ -7,8 +7,8 @@ export const restaurantData = [
       direccion: '123 Calle Falsa, Ciudad',
       rangoPrecio: '$$',
       menu: [
-        { name: 'Tacos al Pastor', price: '$10' },
-        { name: 'Enchiladas', price: '$12' },
+        { name: 'Tacos al Pastor', price: '$10', description: 'tacos de carne cortada a cuchillo con cebollita picada y cilantro' },
+        { name: 'Enchiladas', price: '$12', description: 'plato tipico mexicano, muy picante y condimentado' },
       ],
     },
     {
@@ -18,8 +18,8 @@ export const restaurantData = [
       direccion: '456 Via Roma, Ciudad',
       rangoPrecio: '$$$',
       menu: [
-        { name: 'Pizza Margherita', price: '$15' },
-        { name: 'Lasagna', price: '$18' },
+        { name: 'Pizza Margherita', price: '$15', description: 'pizza de masa madre, muzzarela, tomate y albahaca con un poco de pesto' },
+        { name: 'Lasagna', price: '$18', description:'lasagna de carne con muuuucha salsa de tomate y cebollita en cada capa'},
       ],
     },
   ];
