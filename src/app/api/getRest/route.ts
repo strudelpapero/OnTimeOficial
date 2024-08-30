@@ -1,10 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { Pool } from 'pg';
 import { NextResponse } from 'next/server';
-
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL, // o la variable de entorno que estés usando
-});
 
 export async function GET() {
   try {
@@ -18,3 +13,4 @@ export async function GET() {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+

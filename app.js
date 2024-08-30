@@ -30,7 +30,7 @@ app.use(express.json());
     res.status(500).send('Server Error');
   }
 });*/
-app.get('/getRestaurantes', async (req, res) => {
+app.get('/getRestaurantes', async (req, res) => { //ya esta
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT id, nombre, foto FROM restaurante');
@@ -40,7 +40,7 @@ app.get('/getRestaurantes', async (req, res) => {
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+}); 
 
 app.get('/getInfoNosotros')
 
