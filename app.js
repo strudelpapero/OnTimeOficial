@@ -40,7 +40,7 @@ app.get('/getRestaurantes', async (req, res) => { //ya esta
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-}); 
+}); //listo
 
 app.get('/getInfoNosotros')
 
@@ -69,7 +69,7 @@ app.get('/getInfo_RestyPlato/:id', async (req, res) => {
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+}); //listo
 
 app.post('/newplato', async (req, res) => {
   const {
@@ -94,7 +94,7 @@ app.post('/newplato', async (req, res) => {
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+});//listo
 
 app.get('/getIdplato/:nombre/:idrest', async (req, res) => {
   const { nombre, idrest } = req.params;
@@ -112,7 +112,7 @@ app.get('/getIdplato/:nombre/:idrest', async (req, res) => {
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+}); //listo
 
 app.post('/updateplatoNombrePrecio/:id', async (req, res) => {
   const {id} = req.params
@@ -130,7 +130,7 @@ app.post('/updateplatoNombrePrecio/:id', async (req, res) => {
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+}); //listo
 
 app.post('/updateplatoDescripcionOpcionAlimentaria/:idplato', async (req, res) => {
   const {idplato} = req.params
@@ -148,7 +148,7 @@ app.post('/updateplatoDescripcionOpcionAlimentaria/:idplato', async (req, res) =
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+}); //listo --> unificada con la anrerior
 
 app.get('/getMetodosdePago/:idrest', async (req, res) => {
   const { idrest } = req.params;
@@ -173,7 +173,7 @@ WHERE
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+});//listo
 
 app.post('/updateMetodoPago/:idrest', async (req, res) => {
   const {idrest} = req.params
@@ -191,7 +191,7 @@ app.post('/updateMetodoPago/:idrest', async (req, res) => {
     console.error('Error fetching data:', err);
     res.status(500).send('Server Error');
   }
-});
+}); //listo
 
 //ejemplo de subida de foto
 app.post('/uploadFoto/:id', upload.single('foto'), async (req, res) => {
