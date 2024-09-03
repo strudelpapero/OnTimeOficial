@@ -58,7 +58,6 @@ export async function POST(request: Request) {
     // Responde con el ID de la reserva
     return NextResponse.json({ id: reservaId }, { status: 201 });
   } catch (error: any) {
-    // Manejo de errores
     console.error('Error creando la reserva:', error.message);
     return NextResponse.json({ error: 'Error creando la reserva' }, { status: 500 });
   }
