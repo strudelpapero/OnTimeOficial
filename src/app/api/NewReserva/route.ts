@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    // Obtener datos del cuerpo de la solicitud
     const {
       documento_usuario,
       nombre,
@@ -14,48 +13,67 @@ export async function POST(request: Request) {
       cant_clientes,
       id_restaurante,
       platos,
-     // Array { id: número, cantidad: número }
       metododepago
     } = await request.json();
 
-    // Inserta la nueva reserva
+    console.log("Datos recibidos:", {
+      documento_usuario,
+      nombre,
+      fecha,
+      hora,
+      telefono,
+      mail,
+      cant_clientes,
+      id_restaurante,
+      platos,
+      metododepago
+    });
+
+    // Inserta la reserva en la tabla 'reserva'
     const reservaResult = await sql`
       INSERT INTO reserva (documento_usuario, nombre, fecha, hora, telefono, mail, cant_clientes, id_restaurante)
       VALUES (${documento_usuario}, ${nombre}, ${fecha}, ${hora}, ${telefono}, ${mail}, ${cant_clientes}, ${id_restaurante})
       RETURNING id;
     `;
 
-    const reservaId = reservaResult.rows[0].id;
+    console.log("Reserva creada:", reservaResult.rows);
 
-    // Calcula el precio total 
+    const reservaId = reservaResult[0].id;
+
+    // Calcula el precio total de los platos
     const preciosPlatos = await Promise.all(
       platos.map(async (plato: { id: number, cantidad: number }) => {
         const platoResult = await sql`
           SELECT precio FROM platos WHERE id = ${plato.id}
         `;
-        return platoResult.rows[0].precio * plato.cantidad;
+        console.log("Precio del plato:", platoResult[0].precio);
+        return platoResult[0].precio * plato.cantidad;
       })
     );
 
     const precioTotal = preciosPlatos.reduce((acc, precio) => acc + precio, 0);
 
-    // Inserta el nuevo pedido
+    // Inserta el pedido en la tabla 'pedido'
     const pedidoResult = await sql`
       INSERT INTO pedido (id_reserva, precio_total, metodo_pago)
       VALUES (${reservaId}, ${precioTotal}, ${metododepago}) 
       RETURNING id;
     `;
 
-    const pedidoId = pedidoResult.rows[0].id;
+    console.log("Pedido creado:", pedidoResult.rows);
 
-    const comanda = platos.map((plato: { id: string }) => sql`
+    const pedidoId = pedidoResult[0].id;
+
+    // Inserta los platos en la tabla 'comanda'
+    const comanda = platos.map((plato: { id: number }) => sql`
       INSERT INTO comanda (id_plato, id_pedido)
       VALUES (${plato.id}, ${pedidoId});
     `);
 
     await Promise.all(comanda);
 
-    // Responde con el ID de la reserva
+    console.log("Comandas creadas");
+
     return NextResponse.json({ id: reservaId }, { status: 201 });
   } catch (error: any) {
     console.error('Error creando la reserva:', error.message);
