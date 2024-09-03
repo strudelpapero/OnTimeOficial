@@ -38,7 +38,7 @@ export async function POST(request: Request) {
 
     console.log("Reserva creada:", reservaResult.rows);
 
-    const reservaId = reservaResult[0].id;
+    const reservaId = reservaResult.rows[0].id;
 
     // Calcula el precio total de los platos
     const preciosPlatos = await Promise.all(
@@ -46,8 +46,8 @@ export async function POST(request: Request) {
         const platoResult = await sql`
           SELECT precio FROM platos WHERE id = ${plato.id}
         `;
-        console.log("Precio del plato:", platoResult[0].precio);
-        return platoResult[0].precio * plato.cantidad;
+        console.log("Precio del plato:", platoResult.rows[0].precio);
+        return platoResult.rows[0].precio * plato.cantidad;
       })
     );
 
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
 
     console.log("Pedido creado:", pedidoResult.rows);
 
-    const pedidoId = pedidoResult[0].id;
+    const pedidoId = pedidoResult.rows[0].id;
 
     // Inserta los platos en la tabla 'comanda'
     const comanda = platos.map((plato: { id: number }) => sql`
