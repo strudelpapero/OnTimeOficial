@@ -14,3 +14,9 @@ export interface MenuItem {
     rangoPrecio: string;
     menu: MenuItem[];
   }
+
+  export interface RestaurantList {
+    id: string;
+    nombre: string;
+    foto: string;
+  }

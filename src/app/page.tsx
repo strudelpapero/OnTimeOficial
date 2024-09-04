@@ -10,20 +10,28 @@ import Link from 'next/link';
 import Image from 'next/image';
 import LogoReloj from '/public/Assets/icons/logoReloj.svg';
 import Lupita from '/public/Assets/icons/lupita.svg';
-import { restaurantData } from '@/dataImprovisado/RestaurantData';
-import { Restaurant } from '@/types'; // Nueva importación de la interfaz
+import { RestaurantList } from '@/types'; // Nueva importación de la interfaz
 
 
 const Home = () => {
   const router = useRouter();  // ← Aquí es donde usas `useRouter`
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-
-  useEffect(() => {
-    // En lugar de obtener datos de una API, usa los datos simulados
-    setRestaurants(restaurantData);
-  }, []);
+  const [restaurants, setRestaurants] = useState<RestaurantList[]>([]); // Define el tipo aquí
+  
+    useEffect(() => {
+      async function fetchRestaurants() {
+        try {
+          const response = await fetch('/api/getRest/route.ts'); // Asegúrate de poner la ruta correcta
+          const data: RestaurantList[] = await response.json(); // Asegúrate de usar el tipo correcto
+          setRestaurants(data);
+        } catch (error) {
+          console.error('Error fetching restaurants:', error);
+        }
+      }
+  
+      fetchRestaurants();
+    }, []);
 
   const openRegisterModal = () => setIsRegisterModalOpen(true);
   const closeRegisterModal = () => setIsRegisterModalOpen(false);
@@ -101,5 +109,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
