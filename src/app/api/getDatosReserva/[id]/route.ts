@@ -2,9 +2,8 @@ import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
+  const id = params.id; 
   try {
-    // Obtén el id de la reserva desde los parámetros de la solicitud
-    const id = params.id; 
     
     // Realiza la consulta para obtener la reserva por id
     const result = await sql`
