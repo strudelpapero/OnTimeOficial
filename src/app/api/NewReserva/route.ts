@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       platos,
       metododepago
     });
-
+    console.log(platos.cantidad)
     // Inserta la reserva en la tabla 'reserva'
     const reservaResult = await sql`
       INSERT INTO reserva (documento_usuario, nombre, fecha, hora, telefono, mail, cant_clientes, id_restaurante)
@@ -65,9 +65,9 @@ export async function POST(request: Request) {
     const pedidoId = pedidoResult.rows[0].id;
 
     // Inserta los platos en la tabla 'comanda'
-    const comanda = platos.map((plato: { id: number }) => sql`
-      INSERT INTO comanda (id_plato, id_pedido)
-      VALUES (${plato.id}, ${pedidoId});
+    const comanda = platos.map((plato: { id: number, cantidad: number}) => sql`
+      INSERT INTO comanda (id_plato, id_pedido, cantidad)
+      VALUES (${plato.id}, ${pedidoId}, ${plato.cantidad});
     `);
 
     await Promise.all(comanda);
