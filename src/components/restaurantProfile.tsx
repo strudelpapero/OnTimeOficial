@@ -2,8 +2,33 @@
 
 import React, { useState } from 'react';
 
-const RestaurantProfileForm = ({ initialData, onSave }) => {
-  const [restaurantData, setRestaurantData] = useState(initialData || {
+interface MenuItem {
+  name: string;
+  price: string;
+}
+
+interface RestaurantData {
+  opcionesAlimentarias: {
+    glutenFree: boolean;
+    vegetariano: boolean;
+    vegano: boolean;
+    kosher: boolean;
+  };
+  metodoPago: {
+    efectivo: boolean;
+    tarjeta: boolean;
+    mercadoPago: boolean;
+  };
+  menu: MenuItem[];
+}
+
+interface RestaurantProfileFormProps {
+  initialData?: RestaurantData;
+  onSave: (data: RestaurantData) => void;
+}
+
+const RestaurantProfileForm: React.FC<RestaurantProfileFormProps> = ({ initialData, onSave }) => {
+  const [restaurantData, setRestaurantData] = useState<RestaurantData>(initialData || {
     opcionesAlimentarias: {
       glutenFree: false,
       vegetariano: false,
@@ -20,7 +45,7 @@ const RestaurantProfileForm = ({ initialData, onSave }) => {
     ],
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
       setRestaurantData((prevState) => ({
@@ -46,7 +71,7 @@ const RestaurantProfileForm = ({ initialData, onSave }) => {
     }
   };
 
-  const handleMenuChange = (index, e) => {
+  const handleMenuChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const updatedMenu = restaurantData.menu.map((item, i) =>
       i === index ? { ...item, [name]: value } : item
@@ -64,9 +89,8 @@ const RestaurantProfileForm = ({ initialData, onSave }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí podrías llamar a la función para guardar los datos en la base de datos
     onSave(restaurantData);
   };
 
@@ -79,7 +103,7 @@ const RestaurantProfileForm = ({ initialData, onSave }) => {
             <input
               type="checkbox"
               name={key}
-              checked={restaurantData.opcionesAlimentarias[key]}
+              checked={restaurantData.opcionesAlimentarias[key as keyof typeof restaurantData.opcionesAlimentarias]}
               onChange={handleInputChange}
             />
             {key.charAt(0).toUpperCase() + key.slice(1)}
@@ -94,7 +118,7 @@ const RestaurantProfileForm = ({ initialData, onSave }) => {
             <input
               type="checkbox"
               name={`metodoPago.${key}`}
-              checked={restaurantData.metodoPago[key]}
+              checked={restaurantData.metodoPago[key as keyof typeof restaurantData.metodoPago]}
               onChange={handleInputChange}
             />
             {key.charAt(0).toUpperCase() + key.slice(1)}

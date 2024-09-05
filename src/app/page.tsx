@@ -93,7 +93,7 @@ const Home = () => {
           restaurants.map(restaurant => (
             <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
               <div className="restaurante-principal">
-                <img className="restaurante-imagen" src={restaurant.foto} alt={restaurant.nombre} />
+                <Image className="restaurante-imagen" src={restaurant.foto} alt={restaurant.nombre} width={350} height={200}/>
                 <span className="restaurante-nombre">{restaurant.nombre}</span>
               </div>
             </Link>

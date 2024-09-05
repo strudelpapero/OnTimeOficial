@@ -1,22 +1,29 @@
-"use client";  // ← Añade esto al inicio del archivo
+"use client";
 
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const RegisterModal = ({ isOpen, onClose, onLoginClick }) => {
-  if (!isOpen) return null;
+interface RegisterModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onLoginClick: () => void;
+}
 
-  // Estados para cada campo del formulario
+const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose, onLoginClick }) => {
+  // Mover los hooks fuera de cualquier condición
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [nombreRestaurante, setNombreRestaurante] = useState('');
   const [ubicacion, setUbicacion] = useState('');
-  const [horarios, setHorarios] = useState('');
   const [cantidadMesas, setCantidadMesas] = useState('');
 
-  // Manejar el envío del formulario
-  const handleSubmit = async (e) => {
+  // Si el modal no está abierto, no renderizar el contenido del modal, pero los hooks ya han sido llamados
+  if (!isOpen) {
+    return null;
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const newRestaurant = {

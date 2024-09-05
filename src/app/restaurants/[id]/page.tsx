@@ -7,7 +7,6 @@ import Image from 'next/image';
 import { RestaurantMenu, MenuItem } from '@/types'; // Importa la interfaz correcta
 import billete from '/public/Assets/icons/billete.svg';
 import ubicacion from '/public/Assets/icons/ubicacion.svg';
-import masInfo from '/public/Assets/icons/+.svg';
 
 const RestaurantDetails = () => {
   const pathname = usePathname(); // Obtiene la ruta actual
@@ -53,7 +52,7 @@ const RestaurantDetails = () => {
       <Header />
       <main>
         <div className="conteiner-imagen-resto">
-          <img className="imagen-resto" src={restaurant.foto} alt={restaurant.nombre} />
+          <Image className="imagen-resto" src={restaurant.foto} alt={restaurant.nombre} />
         </div>
 
         <div className="conteiner-nombre-resto">
@@ -61,12 +60,12 @@ const RestaurantDetails = () => {
         </div>
 
         <div className="conteiner-ubicacion">
-          <img className="icon-ubicacion" src={ubicacion} alt="Ubicación" />
+          <Image className="icon-ubicacion" src={ubicacion} alt="Ubicación" />
           <span className="ubicacion">{restaurant.direccion}</span>
         </div>
 
         <div className="conteiner-rango-precio">
-          <img className="icon-billete" src={billete} alt="Precio" />
+          <Image className="icon-billete" src={billete} alt="Precio" />
           <span className="rango-precio">{restaurant.rangoPrecio}</span>
         </div>
 
@@ -106,7 +105,7 @@ const RestaurantDetails = () => {
             <div className="popup-overlay" onClick={closePopup}>
               <div className="popup" onClick={(e) => e.stopPropagation()}>
                 <button className="close-btn" onClick={closePopup}>X</button>
-                <img src={selectedDish.imageUrl} alt={selectedDish.name} className="popup-image" />
+                <Image src={selectedDish.imageUrl} alt={selectedDish.name} className="popup-image" />
                 <h2>{selectedDish.name}</h2>
                 <p>{selectedDish.description}</p>
               </div>

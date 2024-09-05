@@ -152,11 +152,14 @@ html {
 
 .restaurant-list {
   background-color:  var(--background-color);
+  justify-content: center;
+  align-items: center;
 }
 
 .menu {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* styles.css */
@@ -169,6 +172,8 @@ html {
   cursor: pointer;
   border-radius: 10px;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
 .restaurante-link {
@@ -182,6 +187,8 @@ html {
   height: auto;
   border-radius: 10px;
   transition: transform 0.3s ease;
+  justify-content: center;
+  align-items: center;
 }
 
 .restaurante-principal:hover .restaurante-imagen {
