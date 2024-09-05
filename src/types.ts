@@ -6,7 +6,7 @@ export interface MenuItem {
     description: string;
   }
   
-  export interface Restaurant {
+  export interface RestaurantMenu {
     id: string;
     nombre: string;
     foto: string;

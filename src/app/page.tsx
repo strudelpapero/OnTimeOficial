@@ -22,9 +22,10 @@ const Home = () => {
     useEffect(() => {
       async function fetchRestaurants() {
         try {
-          const response = await fetch('/api/getRest/route.ts'); // Asegúrate de poner la ruta correcta
+          const response = await fetch('/api/getRest/'); // Asegúrate de poner la ruta correcta
           const data: RestaurantList[] = await response.json(); // Asegúrate de usar el tipo correcto
           setRestaurants(data);
+          console.log(data);          
         } catch (error) {
           console.error('Error fetching restaurants:', error);
         }
@@ -86,19 +87,22 @@ const Home = () => {
           </button>
         </form>
       </div>
-      {/*<div>
-         <img src={'https://wmkycebpgwtmzm2u.public.blob.vercel-storage.com/platos/amayta-BTPpZx8sfGwnwvwH2lxQc2HHUcaHLa'} alt="probar" width={100} height={90}/>
-      </div> */}
+
       <div className="restaurant-list">
-          {restaurants.map(restaurant => (
+        {Array.isArray(restaurants) && restaurants.length > 0 ? (
+          restaurants.map(restaurant => (
             <Link key={restaurant.id} href={`/restaurants/${restaurant.id}`}>
               <div className="restaurante-principal">
                 <img className="restaurante-imagen" src={restaurant.foto} alt={restaurant.nombre} />
                 <span className="restaurante-nombre">{restaurant.nombre}</span>
               </div>
             </Link>
-          ))}
-        </div>
+          ))
+        ) : (
+          <p>No restaurants found.</p>
+        )}
+      </div>
+
       
             
       {/* Modal para el registro */}
