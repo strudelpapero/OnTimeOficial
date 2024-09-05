@@ -5,7 +5,6 @@ export async function GET(request: Request, { params }: { params: { id: string, 
   const restauranteId = params.id; 
   const reservaId = params.idreserva;
 
-  console.log(restauranteId, reservaId);
   try {
     // Primera consulta: Obtener la información de la reserva y el id_pedido
     const reservaResult = await sql`
@@ -35,7 +34,6 @@ export async function GET(request: Request, { params }: { params: { id: string, 
     const reserva = reservaResult.rows[0];
     const pedidoId = reserva.id_pedido;
 
-    console.log(reserva, pedidoId);
     // Segunda consulta: Obtener los detalles de los platos asociados al pedido
     const platosResult = await sql`
       SELECT 
@@ -50,16 +48,11 @@ export async function GET(request: Request, { params }: { params: { id: string, 
         c.id_pedido = ${pedidoId};
     `;
 
-    console.log(platosResult);
-
     // Preparar la respuesta
     const respuesta = {
       reserva,
       platos: platosResult.rows
-    };
-
-    console.log(respuesta);
-    // Enviar la respuesta JSON
+    };;
 
     return NextResponse.json(respuesta, { status: 200 });
   } catch (error: any) {
