@@ -11,7 +11,10 @@ export async function GET(request: Request, { params }: { params: { id: string }
         r.calle,
         r.foto,
         p.nombre AS plato,
-        p.precio
+        p.descripcion,
+        p.precio,
+        (SELECT ROUND(MIN(precio) / 100.0) * 100 FROM platos WHERE id_rest = ${id}) AS precio_minimo,
+        (SELECT ROUND(MAX(precio) / 100.0) * 100 FROM platos WHERE id_rest = ${id}) AS precio_maximo
       FROM 
         restaurante r
       JOIN 
@@ -19,6 +22,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
       WHERE 
         r.id = ${id};
     `;
+
     // Devolver los resultados en formato JSON con un estado 200 (OK)
     return NextResponse.json(result.rows, { status: 200 });
   } catch (error: any) {
