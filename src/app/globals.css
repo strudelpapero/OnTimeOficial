@@ -548,27 +548,26 @@ html {
 .box-info-plato {
   margin-bottom: 20px;
   font-size: 4vw;
-}
-
-.agregar-al-pedido-btn {
-  background-color: var(--buttons-color);
-  color: var(--background-color);
-  font-family: "Actor", sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  font-style: normal;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  object-fit: cover;
-  font-size: 4vw;
-  max-width: 80%;
-}
+} 
 
 .show {
   pointer-events: auto;
   opacity:1;
+}
+
+.conteiner-info-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  position:fixed;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .info-box{
@@ -581,7 +580,7 @@ html {
   text-align: center;
 }
 
-.info-box h1{
+.info-box h2{
   font-size: 4.8vw;
   font-weight: 100;
 }

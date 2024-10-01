@@ -1,15 +1,18 @@
 //interfaces necesarias
 //declarar el tipo de los datos de 'restauranteData'
 export interface MenuItem {
-    name: string;
-    price: string;
-    description: string;
-    imageUrl: string;
+    plato: string;
+    precio: string;
+    descripcion: string;
+    foto: string;
+    vegetariano?: boolean;
+    sin_gluten?: boolean;
+    kosher?: boolean;
   }
   
   export interface RestaurantMenu {
     id: string;
-    nombre: string;
+    restaurante: string;
     foto: string;
     direccion: string;
     rangoPrecio: string;
