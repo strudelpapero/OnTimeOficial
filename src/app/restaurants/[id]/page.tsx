@@ -44,11 +44,11 @@ const RestaurantDetails = () => {
               restaurante: data[0].restaurante,
               foto: data[0].foto || '/public/Assets/comidaItaliana.jpg', // Imagen por defecto si no hay foto
               direccion: data[0].direccion,
-              rangoPrecio: `${data[0].precio_minimo} - ${data[0].precio_maximo}`,
+              rangoPrecio: `$${data[0].precio_minimo} - $${data[0].precio_maximo}`,
               menu: data.map(item => ({
                 plato: item.plato,
                 descripcion: item.descripcion,
-                precio: item.precio,
+                precio: `$${item.precio}`,
                 foto: item.foto || '/public/Assets/comidaItaliana.jpg', // Imagen por defecto si no hay foto
                 vegetariano: item.vegetariano,
                 sin_gluten: item.sin_gluten,
@@ -112,11 +112,13 @@ const RestaurantDetails = () => {
               restaurant.menu.map((item, index) => (
                 <li key={index}>
                   <div className="plato">
-                    <span>{item.plato}</span>
-                    <span className="descripcion">
-                      {item.descripcion.length > 50 ? `${item.descripcion.substring(0, 50)}...` : item.descripcion}
-                      <button type="button" className="mas-info-btn" onClick={() => openPopup(item)}>más</button>
-                    </span>
+                    <div className="plato-descripcion">
+                      <span>{item.plato}</span> <br></br>
+                      <span className="descripcion">
+                        {item.descripcion.length > 50 ? `${item.descripcion.substring(0, 50)}...` : item.descripcion}
+                        <button type="button" className="mas-info-btn" onClick={() => openPopup(item)}>más</button>
+                      </span>
+                    </div>
                     <div className="info">
                       <span className="precio">{item.precio}</span>
                     </div>

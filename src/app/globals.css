@@ -475,9 +475,10 @@ html {
 .plato {
   display: flex;
   flex-direction: column;
+  margin-right: auto;
 }
 
-.plato > span:first-child {
+.plato-descripcion {
   font-size: 18px;
   font-weight: bold;
   color: #000;
@@ -493,8 +494,8 @@ html {
   border: none;
   color: #007BFF;
   cursor: pointer;
-  font-size: 14px;
-  margin-left: 8px;
+  font-size: 13px;
+  margin-left: 6px;
   padding: 0;
 }
 
@@ -502,12 +503,18 @@ html {
   text-decoration: underline;
 }
 
+
+
+/*popup*/
+
 .info {
   margin-top: 8px;
   font-size: 16px;
   font-weight: bold;
   color: #000;
+  align-items: flex-end;
 }
+
 
 .info-box {
   display: flex;
@@ -580,6 +587,12 @@ html {
   text-align: center;
 }
 
+.info {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Mueve el contenedor de registro a la derecha */
+}
+
 .info-box h2{
   font-size: 4.8vw;
   font-weight: 100;
@@ -589,6 +602,8 @@ html {
   font-size: 3.8vw;
   padding: 10px; 
 }
+
+/**/
 
 .agregar-al-pedido-btn {
   display: block;
