@@ -1,9 +1,9 @@
 "use client";  // ← Añade esto al inicio del archivo
-import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+// import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import React from 'react';
 import { useState } from 'react';
 import axios from "axios"
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 
 const LoginModal = ({ isOpen, onClose }) => {

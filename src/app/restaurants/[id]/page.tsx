@@ -131,6 +131,7 @@ const RestaurantDetails = () => {
           </ul>
           {isPopupOpen && selectedDish && (
             <div className="conteiner-info-box">
+              <div className="overlay"></div>
               <div className="info-box" onClick={(e) => e.stopPropagation()}>
                 <button className="close-info-box" onClick={closePopup}>X</button>
                 <Image src={selectedDish.foto} alt={selectedDish.plato} className="box-foto-plato" width={200} height={100}/>
