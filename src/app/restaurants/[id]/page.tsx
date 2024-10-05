@@ -8,6 +8,9 @@ import { RestaurantMenu, MenuItem } from '@/types'; // Importa la interfaz corre
 import billete from '/public/Assets/icons/billete.svg';
 import ubicacion from '/public/Assets/icons/ubicacion.svg';
 import comidaItaliana from '/public/Assets/comidaItaliana.jpg';
+import vegi from '/public/Assets/icons/vegi.svg';
+import sintacc from '/public/Assets/icons/sintacc.svg';
+import kosher from '/public/Assets/icons/kosher.svg';
 
 const RestaurantDetails = () => {
   const pathname = usePathname(); // Obtiene la ruta actual
@@ -110,18 +113,16 @@ const RestaurantDetails = () => {
           <ul>
             {restaurant.menu && restaurant.menu.length > 0 ? (
               restaurant.menu.map((item, index) => (
-                <li key={index}>
-                  <div className="plato">
-                    <div className="plato-descripcion">
-                      <span>{item.plato}</span> <br></br>
+                <li key={index} className='menu-item'>
+                  <div className="menu-contenido">
+                    <span className="nombre-plato">{item.plato}</span> 
+                    <span className="precio">{item.precio}</span>
+                  </div>
+                  <div className="menu-descripcion">      
                       <span className="descripcion">
                         {item.descripcion.length > 50 ? `${item.descripcion.substring(0, 50)}...` : item.descripcion}
                         <button type="button" className="mas-info-btn" onClick={() => openPopup(item)}>más</button>
-                      </span>
-                    </div>
-                    <div className="info">
-                      <span className="precio">{item.precio}</span>
-                    </div>
+                      </span>                      
                   </div>
                 </li>
               ))
@@ -138,9 +139,9 @@ const RestaurantDetails = () => {
                 <h2 className='box-plato'>{selectedDish.plato}</h2>
                 <p className='box-info-plato'>{selectedDish.descripcion}</p>
                 <div>
-                  {selectedDish.vegetariano && <span>Vegetariano</span>}
-                  {selectedDish.sin_gluten && <span>Sin Gluten</span>}
-                  {selectedDish.kosher && <span>Kosher</span>}
+                  {selectedDish.vegetariano && <Image src={vegi} alt='Vegetariano' className='foto-dieta' width={30} height={30}/>}
+                  {selectedDish.sin_gluten && <Image src={sintacc} alt='Sin gluten' className='foto-dieta' width={30} height={30}/>}
+                  {selectedDish.kosher && <Image src={kosher} alt='Kosher' className='foto-dieta' width={30} height={30}/>}
                 </div>
               </div>
             </div>

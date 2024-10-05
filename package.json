@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "@types/pg": "^8.11.8",
     "@vercel/blob": "^0.23.4",
     "@vercel/postgres": "^0.9.0",
     "axios": "^1.7.7",
     "create-next-app": "^14.2.3",
     "g": "^2.0.1",
+    "js-cookie": "^3.0.5",
     "next": "^14.2.8",
     "npm": "^10.8.1",
     "pg": "^8.12.0",

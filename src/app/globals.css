@@ -472,21 +472,47 @@ html {
   font-size: 4.8vw;
 }
 
-.plato {
-  display: flex;
-  flex-direction: column;
-  margin-right: auto;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.plato-descripcion {
-  font-size: 18px;
+.menu-item {
+  margin-bottom: 20px;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.menu-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.nombre-plato{
+  flex: 1;
+}
+.precio{
+  white-space: nowrap; /* Evita que el precio se rompa a la siguiente línea */
+  margin-left: 20px;
+}
+.nombre-plato .precio{
   font-weight: bold;
+  font-size: 18px;
+}
+
+
+.menu-descripcion {
+  font-size: 18px;
   color: #000;
+  max-width: 60%; /* Limita el ancho de la descripción para que no ocupe toda la fila */
+  margin-top: 5px;
 }
 
 .descripcion {
   font-size: 14px;
   color: #555;
+  margin-right: auto;
 }
 
 .mas-info-btn {
@@ -565,6 +591,10 @@ html {
   margin-bottom: 10px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+.foto-dieta{
+  margin-left: 40%;
 }
 
 .box-plato {
