@@ -1,20 +1,14 @@
-"use client";  // ← Añade esto al inicio del archivo
-import { useGoogleLogin } from '@react-oauth/google';
+"use client";
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import React, { useState } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const LoginModal = ({ isOpen, onClose }) => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState(''); // Si lo necesitas para login manual
+  const [password, setPassword] = useState('');
 
-  const authenticateUser = (user) => {
-    const expirationTime = new Date(new Date().getTime() + 600000);
-    Cookies.set('auth', JSON.stringify(user), { expires: expirationTime });
-  };
-
-  if (!isOpen) return null;
-
+  // Hook `useGoogleLogin` debe estar siempre antes de cualquier return
   const googleLogin = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -26,19 +20,26 @@ const LoginModal = ({ isOpen, onClose }) => {
             },
           }
         );
-        // Autenticar al usuario directamente con los datos obtenidos
-        const userData = {
-          name: res.data.name,
-          email: res.data.email,
-          // O cualquier otra información relevante que quieras guardar
-        };
-        authenticateUser(userData);
+        setUsername(res.data.name);
+        setPassword(res.data.password);
+        authenticateUser(res.data.name, res.data.password); // Asegúrate de pasar los datos correctos aquí
       } catch (err) {
         console.log(err);
       }
     },
-    onError: () => console.log('Error al iniciar sesión con Google'),
+    onError: () => console.log('Login failed'),
   });
+
+  const authenticateUser = (user, pass) => {
+    const userData = {
+      user,
+      pass,
+    };
+    const expirationTime = new Date(new Date().getTime() + 600000); // 10 minutos
+    Cookies.set('auth', JSON.stringify(userData), { expires: expirationTime });
+  };
+
+  if (!isOpen) return null; // No afecta a los hooks ya definidos
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -49,21 +50,14 @@ const LoginModal = ({ isOpen, onClose }) => {
         </div>
         <div className="modal-body-login">
           <form>
-            <input
-              type="text"
-              placeholder="Nombre"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)} // Controlando el input
+            <input type="email" placeholder="Correo electrónico" />
+            <input type="password" placeholder="Contraseña" />
+            <GoogleLogin
+              onSuccess={() => googleLogin()}
+              onError={() => {
+                console.log('Login failed');
+              }}
             />
-            <input
-              type="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} // Controlando el input
-            />
-            <button type="button" onClick={() => googleLogin()}>
-              Iniciar sesión con Google
-            </button>
             <button type="submit">INGRESAR</button>
           </form>
         </div>
