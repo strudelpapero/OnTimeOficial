@@ -7,8 +7,6 @@ import { useRouter } from 'next/navigation'; // Importa useRouter para la navega
 import LoginModal from '@/components/loginModal';
 import Link from 'next/link'; 
 import Image from 'next/image';
-import LogoReloj from '/public/Assets/icons/logoReloj.svg';
-import Lupita from '/public/Assets/icons/lupita.svg';
 import { RestaurantList } from '@/types'; // Nueva importación de la interfaz
 import { RestaurantMenu, MenuItem } from '@/types';
 
@@ -63,7 +61,7 @@ const Home = () => {
       <div className="conteiner-hero">
         <div className="hero">
           <div className="conteiner-logo">
-            <a href="/"><Image className="logo-reloj" src={LogoReloj} alt="Logo" width={50} height={50} /></a>
+            <a href="/"><Image className="logo-reloj" src="/Assets/icons/logoReloj.svg" alt="Logo" width={50} height={50} /></a>
             <span className="logo-nombre"><a href="/">N TIME</a></span>
           </div>
           <div className="conteiner-registro">
@@ -78,7 +76,7 @@ const Home = () => {
         <form className="search-form">
           <input type="search" placeholder="Buscar..." className="search-input" id="searchInput" />
           <button type="submit" className="search-button" id="searchButton">
-            <Image className="search-lupita" src={Lupita} alt="Buscar" width={20} height={20} />
+            <Image className="search-lupita" src={'/Assets/icons/lupita.svg'} alt="Buscar" width={20} height={20} />
           </button>
         </form>
       </div>
