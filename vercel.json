@@ -14,7 +14,7 @@
  "rewrites": [
     {
         "src": "/(.*)",
-        "destination": "/page"
+        "destination": "/"
     }
  ]
 }
