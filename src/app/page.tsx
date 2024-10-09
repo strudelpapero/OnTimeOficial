@@ -4,7 +4,6 @@
 import { useState, useEffect } from 'react';
 //import axios from 'axios';
 import { useRouter } from 'next/navigation'; // Importa useRouter para la navegación
-import RegisterModal from '@/components/registerModal';
 import LoginModal from '@/components/loginModal';
 import Link from 'next/link'; 
 import Image from 'next/image';
@@ -15,7 +14,6 @@ import { RestaurantList } from '@/types'; // Nueva importación de la interfaz
 
 const Home = () => {
   const router = useRouter();  // ← Aquí es donde usas `useRouter`
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [restaurants, setRestaurants] = useState<RestaurantList[]>([]); // Define el tipo aquí
   
@@ -34,14 +32,14 @@ const Home = () => {
       fetchRestaurants();
     }, []);
 
-  const openRegisterModal = () => setIsRegisterModalOpen(true);
-  const closeRegisterModal = () => setIsRegisterModalOpen(false);
-
-  const openLoginModal = () => {
-    setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
-  };
+  const openLoginModal = () => setIsLoginModalOpen(true);
   const closeLoginModal = () => setIsLoginModalOpen(false);
+
+//  const openLoginModal = () => {
+//    setIsRegisterModalOpen(false);
+//    setIsLoginModalOpen(true);
+//  };
+//  const closeLoginModal = () => setIsLoginModalOpen(false);
 
 //PARA CUANDO HAYA API
   //useEffect(() => {
@@ -51,15 +49,12 @@ const Home = () => {
   //    .catch(error => console.error('Error fetching data:', error));
   //}, []);
 
-  const handleRegister = (restaurantId: string) => {
-    closeRegisterModal();
-    router.push(`/restaurants/${restaurantId}`);
-  };
-
   const handleLogin = (restaurantId: string) => {
     closeLoginModal();
     router.push(`/restaurants/${restaurantId}`);
   };
+
+
 
   return (
     <div className="conteiner">
@@ -72,7 +67,7 @@ const Home = () => {
             <span className="logo-nombre"><a href="/">N TIME</a></span>
           </div>
           <div className="conteiner-registro">
-            <span className="registro-texto" onClick={openRegisterModal}>REGISTRAR RESTAURANTE</span>
+            <span className="registro-texto" onClick={openLoginModal}>REGISTRAR RESTAURANTE</span>
           </div>
         </div>
       </div>
@@ -106,10 +101,9 @@ const Home = () => {
       
             
       {/* Modal para el registro */}
-      <RegisterModal isOpen={isRegisterModalOpen} onClose={closeRegisterModal} onLoginClick={openLoginModal} />
+      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
 
       {/* Modal para el login */}
-      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </div>
   );
 };

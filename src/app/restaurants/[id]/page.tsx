@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation'; // Reemplaza useRouter
+import {useRouter} from 'next/router';
 import Header from '@/components/header';
 import Image from 'next/image';
 import { RestaurantMenu, MenuItem } from '@/types'; // Importa la interfaz correcta
@@ -11,6 +12,7 @@ import comidaItaliana from '/public/Assets/comidaItaliana.jpg';
 import vegi from '/public/Assets/icons/vegi.svg';
 import sintacc from '/public/Assets/icons/sintacc.svg';
 import kosher from '/public/Assets/icons/kosher.svg';
+import ReservarButton from '@/components/ReservarButton';
 
 const RestaurantDetails = () => {
   const pathname = usePathname(); // Obtiene la ruta actual
@@ -28,6 +30,7 @@ const RestaurantDetails = () => {
     setIsPopupOpen(false);
     setSelectedDish(null);
   };
+
 
   useEffect(() => {
     if (id) {
@@ -94,9 +97,7 @@ const RestaurantDetails = () => {
           <span className="rango-precio">{restaurant.rangoPrecio}</span>
         </div>
 
-        <div className="conteiner-reservar-button">
-          <button className="reservar-button">RESERVAR</button>
-        </div>
+        <ReservarButton />
 
         <div className="nav-sections">
           <hr />
