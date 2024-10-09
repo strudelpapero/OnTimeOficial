@@ -1,5 +1,5 @@
+"use client";
 // app/page.tsx
-"use client";  // ← Añade esto al inicio del archivo
 
 import { useState, useEffect } from 'react';
 //import axios from 'axios';
@@ -10,7 +10,7 @@ import Image from 'next/image';
 import LogoReloj from '/public/Assets/icons/logoReloj.svg';
 import Lupita from '/public/Assets/icons/lupita.svg';
 import { RestaurantList } from '@/types'; // Nueva importación de la interfaz
-
+import { RestaurantMenu, MenuItem } from '@/types';
 
 const Home = () => {
   const router = useRouter();  // ← Aquí es donde usas `useRouter`

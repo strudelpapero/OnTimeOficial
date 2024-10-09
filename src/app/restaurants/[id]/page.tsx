@@ -97,7 +97,7 @@ const RestaurantDetails = () => {
           <span className="rango-precio">{restaurant.rangoPrecio}</span>
         </div>
 
-        <ReservarButton />
+         {/* <ReservarButton /> */}
 
         <div className="nav-sections">
           <hr />

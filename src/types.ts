@@ -24,3 +24,10 @@ export interface MenuItem {
     nombre: string;
     foto: string;
   }
+
+  export interface LoginModalProps {
+    isOpen: boolean;      // Especifica que isOpen es un booleano
+    onClose: () => void;  // Especifica que onClose es una función sin retorno
+  }
+
+
