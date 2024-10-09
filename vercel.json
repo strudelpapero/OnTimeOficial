@@ -10,11 +10,5 @@
         "src": "/(.*)",
         "dest": "/page"
     }
- ],   
- "rewrites": [
-    {
-        "src": "/(.*)",
-        "destination": "/"
-    }
- ]
+ ] 
 }
